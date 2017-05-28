@@ -45,54 +45,63 @@ public class Search extends HttpServlet {
     ArrayList connectWebAPI (String searchStr, String appid) throws SAXException, IOException, ParserConfigurationException {
        ArrayList<ResultBeans> resultInfos = new ArrayList<ResultBeans>();
           
-//         String uri = "http://shopping.yahooapis.jp/ShoppingWebService/V1/itemSearch?appid=" + appid + "&query=" + searchStr;
-//       
-//         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-//         DocumentBuilder documentBuilder = factory.newDocumentBuilder();
-//         Document document = documentBuilder.parse(uri);
-//         
-//         Element root = document.getDocumentElement();
-//	 NodeList rootChildren = root.getChildNodes();
-//         
-//         for(int i=0; i < rootChildren.getLength(); i++) {
-//	   Node node = rootChildren.item(i);
-//           ResultBeans result = new ResultBeans();
-//           
-//           if (node.getNodeType() == Node.ELEMENT_NODE) {
-//             Element element = (Element)node;
-//             if (element.getNodeName().equals("Hit")) {
-//                
-//                result.setID(element.getAttribute("index"));
-//                NodeList searchResultsChildren = node.getChildNodes();
-//                
-//                for (int j=0; j < searchResultsChildren.getLength(); j++) {
-//			
-//                    Node searchResultNode = searchResultsChildren.item(j);
-//			
-//                    if (searchResultNode.getNodeType() == Node.ELEMENT_NODE) {
-//                           
-//                        if (searchResultNode.getNodeName().equals("NAME")) {
-//				result.setName(searchResultNode.getTextContent());
-//			} else if (searchResultNode.getNodeName().equals("Image")) {
-//                                NodeList imageInfos = searchResultNode.getChildNodes();
-//                                
-//                                for (int k=0; k < searchResultsChildren.getLength(); k++) {
-//                                    if (searchResultNode.getNodeName().equals("Small") || searchResultNode.getNodeName().equals("Medium")) {
-//                                        result.setImage(searchResultNode.getTextContent());
-//                                    }
-//                                }
-//			} else if (searchResultNode.getNodeName().equals("Price")) {
-//				result.setPrice(searchResultNode.getTextContent());
-//			}                         
-//                    }
-//                    
-//                }
-//           }
-//                        
-//         }
-//         resultInfos.add(result);
-//       }
+         String uri = "http://shopping.yahooapis.jp/ShoppingWebService/V1/itemSearch?appid="+appid+"&query="+searchStr;
+         
+         
+         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+         DocumentBuilder documentBuilder = factory.newDocumentBuilder();
+         Document document = documentBuilder.parse(uri);
+         
+   
+         
+         Element root = document.getDocumentElement();
+	 NodeList rootChildren = root.getChildNodes();
+         
+         System.out.print("------------------");
+         System.out.print(root.getElementsByTagName("Hit"));
+         System.out.print("------------------");
+         
+         
+         for(int i=0; i < rootChildren.getLength(); i++) {
+	   Node node = rootChildren.item(i);
+           ResultBeans result = new ResultBeans();
+           
+           if (node.getNodeType() == Node.ELEMENT_NODE) {
+             Element element = (Element)node;
+             if (element.getNodeName().equals("Hit")) {
+                
+                result.setID(element.getAttribute("index"));
+                NodeList searchResultsChildren = node.getChildNodes();
+                
+                for (int j=0; j < searchResultsChildren.getLength(); j++) {
+			
+                    Node searchResultNode = searchResultsChildren.item(j);
+			
+                    if (searchResultNode.getNodeType() == Node.ELEMENT_NODE) {
+                           
+                        if (searchResultNode.getNodeName().equals("NAME")) {
+				result.setName(searchResultNode.getTextContent());
+			} else if (searchResultNode.getNodeName().equals("Image")) {
+                                NodeList imageInfos = searchResultNode.getChildNodes();
+                                
+                                for (int k=0; k < searchResultsChildren.getLength(); k++) {
+                                    if (searchResultNode.getNodeName().equals("Small") || searchResultNode.getNodeName().equals("Medium")) {
+                                        result.setImage(searchResultNode.getTextContent());
+                                    }
+                                }
+			} else if (searchResultNode.getNodeName().equals("Price")) {
+				result.setPrice(searchResultNode.getTextContent());
+			}                         
+                    }
+                    
+                }
+           }
+                        
+         }
+         resultInfos.add(result);
+       }
        
+
        return resultInfos;
     }
     
@@ -100,15 +109,15 @@ public class Search extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException, SAXException, ParserConfigurationException {
          response.setContentType("text/html;charset=UTF-8");
-        
-         String result = "/search";
-//         String searchStr = request.getParameter("search");
-//         String appid = "dj0zaiZpPWhqd2pObWg4MGxZQSZzPWNvbnN1bWVyc2VjcmV0Jng9Nzg-";
-        
          try (PrintWriter out = response.getWriter()) {
-//         ArrayList<ResultBeans> results = connectWebAPI(searchStr, appid);
+         String result = "search.jsp";
+         request.setCharacterEncoding("UTF-8");
+         String searchStr = request.getParameter("search");
+         String appid = "dj0zaiZpPWhqd2pObWg4MGxZQSZzPWNvbnN1bWVyc2VjcmV0Jng9Nzg-";
          
-//         request.setAttribute("GetDataFromAPI", results);
+         ArrayList<ResultBeans> results = connectWebAPI(searchStr, appid);
+         
+         request.setAttribute("GetDataFromAPI", results);
             
          RequestDispatcher rq = request.getRequestDispatcher(result);
          rq.forward(request, response);

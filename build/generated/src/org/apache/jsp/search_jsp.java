@@ -3,8 +3,10 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import kagoyume.ResultBeans;
+import java.util.ArrayList;
 
-public final class top_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class search_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -44,7 +46,15 @@ public final class top_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
- request.setCharacterEncoding("UTF-8"); 
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+
+    ArrayList<ResultBeans> getInfos = (ArrayList<ResultBeans>)request.getAttribute("GetDataFromAPI");
+    for (int i = 0; i < 10; i++) {
+        
+    }
+
       out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
@@ -53,12 +63,15 @@ public final class top_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <title>JSP Page</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <header>\n");
-      out.write("            <a href=\"login.jsp\">ログイン</a>\n");
-      out.write("        </header>        <form action=\"Search\" method=\"post\">\n");
-      out.write("            <input type=\"text\" name=\"search\">\n");
-      out.write("            <input type=\"submit\" value=\"送信\">\n");
-      out.write("        </form>    \n");
+      out.write("        ");
+
+         out.print(getInfos.size());
+         out.print("<br>");
+         out.print(getInfos);
+        
+        
+      out.write("     \n");
+      out.write("     \n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {

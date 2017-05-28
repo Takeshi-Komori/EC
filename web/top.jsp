@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("UTF-8"); %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,8 +15,7 @@
     <body>
         <header>
             <a href="login.jsp">ログイン</a>
-        </header>
-        <form action="kagoyume/Search" method="get">
+        </header>        <form action="Search" method="post">
             <input type="text" name="search">
             <input type="submit" value="送信">
         </form>    

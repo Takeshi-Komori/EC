@@ -22,9 +22,7 @@
     </head>
     <body>
         <%
-         out.print(getInfos.size());
-         out.print(getInfos);
-        
+            
         %>     
      
     </body>
