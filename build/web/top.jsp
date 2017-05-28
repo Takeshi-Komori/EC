@@ -12,7 +12,10 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form action="kagoyume/Search.java" method="get">
+        <header>
+            <a href="login.jsp">ログイン</a>
+        </header>
+        <form action="kagoyume/Search" method="get">
             <input type="text" name="search">
             <input type="submit" value="送信">
         </form>    

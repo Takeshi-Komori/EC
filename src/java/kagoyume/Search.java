@@ -44,8 +44,7 @@ public class Search extends HttpServlet {
     
     ArrayList connectWebAPI (String searchStr, String appid) throws SAXException, IOException, ParserConfigurationException {
        ArrayList<ResultBeans> resultInfos = new ArrayList<ResultBeans>();
-       
-//       if (searchStr != ""){   
+          
 //         String uri = "http://shopping.yahooapis.jp/ShoppingWebService/V1/itemSearch?appid=" + appid + "&query=" + searchStr;
 //       
 //         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -93,8 +92,7 @@ public class Search extends HttpServlet {
 //         }
 //         resultInfos.add(result);
 //       }
-//       
-//       }
+       
        return resultInfos;
     }
     
@@ -103,14 +101,14 @@ public class Search extends HttpServlet {
         throws ServletException, IOException, SAXException, ParserConfigurationException {
          response.setContentType("text/html;charset=UTF-8");
         
-         String result = "search.jsp";
-         String searchStr = request.getParameter("search");
-         String appid = "dj0zaiZpPWhqd2pObWg4MGxZQSZzPWNvbnN1bWVyc2VjcmV0Jng9Nzg-";
+         String result = "/search";
+//         String searchStr = request.getParameter("search");
+//         String appid = "dj0zaiZpPWhqd2pObWg4MGxZQSZzPWNvbnN1bWVyc2VjcmV0Jng9Nzg-";
         
          try (PrintWriter out = response.getWriter()) {
-         ArrayList<ResultBeans> results = connectWebAPI(searchStr, appid);
+//         ArrayList<ResultBeans> results = connectWebAPI(searchStr, appid);
          
-         request.setAttribute("GetDataFromAPI", results);
+//         request.setAttribute("GetDataFromAPI", results);
             
          RequestDispatcher rq = request.getRequestDispatcher(result);
          rq.forward(request, response);

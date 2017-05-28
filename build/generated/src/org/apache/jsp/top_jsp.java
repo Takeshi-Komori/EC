@@ -51,7 +51,10 @@ public final class top_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <title>JSP Page</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <form action=\"kagoyume/Search.java\" method=\"get\">\n");
+      out.write("        <header>\n");
+      out.write("            <a href=\"login.jsp\">ログイン</a>\n");
+      out.write("        </header>\n");
+      out.write("        <form action=\"kagoyume/Search\" method=\"get\">\n");
       out.write("            <input type=\"text\" name=\"search\">\n");
       out.write("            <input type=\"submit\" value=\"送信\">\n");
       out.write("        </form>    \n");
