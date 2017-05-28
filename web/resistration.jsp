@@ -14,10 +14,10 @@
     <body>
         <h1>新規登録</h1>
         　<form action="resistration_confirm.jsp" method="get">
-          <input type="text" name="username">
-          <input type="text" name="password">
-          <input type="text" name="mail_address">
-          <input type="text" name="address">
+          <label for="user_name">名前</label><input type="text" name="user_name">
+          <label for="password">パスワード</label><input type="text" name="password">
+          <label for="mail_address">メールアドレス</label><input type="text" name="mail_address">
+          <label for="address">住所</label><input type="text" name="address">
           <input type="submit" value="登録">
       </form>
     </body>

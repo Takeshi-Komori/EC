@@ -12,12 +12,19 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>登録確認画面</h1>
-        　<h2>この内容で登録しますか？</h2>
-         
+      <h1>登録確認画面</h1>
+       <h2>この内容で登録しますか？</h2>
          <h3>名前:<% out.print(request.getParameter("user_name")); %></h3><br />
          <h3>パスワード:<% out.print(request.getParameter("password")); %></h3><br />
          <h3>メールアドレス:<% out.print(request.getParameter("mail_address")); %></h3><br />
          <h3>住所<% out.print(request.getParameter("address")); %></h3><br />
+         <form action="" method="">
+             <input type="submit" value="はい">
+             <input tyep="hide" value="">
+         </form>
+         <form action="" method="">
+            　<input type="submit" value="いいえ">
+         </form>
+
     </body>
 </html>

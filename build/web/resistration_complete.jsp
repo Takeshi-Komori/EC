@@ -12,6 +12,12 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>以上の内容で登録しました！</h1>
+        <h2>小森</h2>
+        <h2>komorit2092</h2>
+        <h2>stubgurssy@gmail.com</h2>
+        <h2>東京都</h2>
+        
+        <a href="top.jsp">トップに戻る</a>
     </body>
 </html>

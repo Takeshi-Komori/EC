@@ -12,6 +12,11 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+      <form action="kagiyume/login.java" method="post">
+          <input type="text" name="user_name">
+          <input type="text" name="password">
+          <input type="submit" value="送信">
+      </form>
+        <a href="resitration.jsp">新規登録</a>
     </body>
 </html>
