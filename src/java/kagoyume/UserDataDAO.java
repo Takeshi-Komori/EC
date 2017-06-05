@@ -28,13 +28,13 @@ public class UserDataDAO {
         PreparedStatement st = null;
         try{
             con = DBManager.getConnection();
-            st =  con.prepareStatement("INSERT INTO user_t(name,birthday,tell,type,comment,newDate) VALUES(?,?,?,?,?,?)");
+            st =  con.prepareStatement("INSERT INTO user_t(name,password,mail,address,newDate) VALUES(?,?,?,?,?)");
             st.setString(1, ud.getName());
-            st.setDate(2, new java.sql.Date(System.currentTimeMillis()));//指定のタイムスタンプ値からSQL格納用のDATE型に変更
-//            st.setString(3, ud.getTell());
-//            st.setInt(4, ud.getType());
-//            st.setString(5, ud.getComment());
-            st.setTimestamp(6, new Timestamp(System.currentTimeMillis()));
+            st.setString(2, ud.getPassword());
+            st.setString(3, ud.getMail());
+            st.setString(4, ud.getAddress());
+            st.setTimestamp(5, new Timestamp(System.currentTimeMillis()));
+           
             st.executeUpdate();
             System.out.println("insert completed");
         }catch(SQLException e){
