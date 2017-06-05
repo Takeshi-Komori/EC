@@ -48,7 +48,10 @@ public class ResistrationConfirm extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             final String FORWARD_PATH = "resistraion_complete.jsp";
-            UserDataDAO.getInstance().insert(createDTO(request));
+            UserDataDTO ud = createDTO(request);
+            
+            UserDataDAO.getInstance().insert(ud);
+            request.setAttribute("USER_INFO", ud);
             
             RequestDispatcher rd = request.getRequestDispatcher(FORWARD_PATH);
             rd.forward(request, response);

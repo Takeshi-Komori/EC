@@ -31,7 +31,7 @@
 
    <div class="container">
    <p style="margin-top: 104px; text-align: center;"><strong>新規登録</strong></p>
-    <form style="margin: 12px auto 0 auto; width: 600px;">
+   <form action="resistration_confirm.jsp" style="margin: 12px auto 0 auto; width: 600px;">
      <div class="form-group">
       <label class="control-label" for="username">Name</label>
       <input type="text" id="name" name="name" class="form-control" placeholder="email">

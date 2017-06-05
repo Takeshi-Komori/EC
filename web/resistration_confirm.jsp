@@ -4,7 +4,7 @@
     Author     : nanameue
 --%>
 <%
-    
+   request.setCharacterEncoding("UTF-8");
    String name = request.getParameter("name");
    String email = request.getParameter("email");
    String address = request.getParameter("address");
@@ -48,7 +48,7 @@
        </tbody>
       </table>
      
-    <form action="" style="float: right;">
+    <form action="ResistrationConfirm" style="float: right;">
      <input type="hidden" value="<%= name %>">
      <input type="hidden" value="<%= email %>">
      <input type="hidden" value="<%= address %>">

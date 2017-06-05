@@ -51,7 +51,7 @@ public final class resistration_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("    <meta charset=\"utf-8\">\n");
       out.write("    <title>Bootstrapの練習</title>\n");
       out.write("    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n");
-      out.write("    <link href=\"css/bootstrap.min.css\" rel=\"stylesheet\" media=\"screen\">\n");
+      out.write("    <link href=\"bootstrap/css/bootstrap.min.css\" rel=\"stylesheet\" media=\"screen\">\n");
       out.write("  </head>\n");
       out.write("  <body>\n");
       out.write("   <nav class=\"navbar navbar-default navbar-fixed-top\">\n");
@@ -70,22 +70,26 @@ public final class resistration_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("\n");
       out.write("   <div class=\"container\">\n");
       out.write("   <p style=\"margin-top: 104px; text-align: center;\"><strong>新規登録</strong></p>\n");
-      out.write("    <form style=\"margin: 12px auto 0 auto; width: 600px;\">\n");
+      out.write("   <form action=\"resistration_confirm.jsp\" style=\"margin: 12px auto 0 auto; width: 600px;\">\n");
       out.write("     <div class=\"form-group\">\n");
       out.write("      <label class=\"control-label\" for=\"username\">Name</label>\n");
-      out.write("      <input type=\"text\" id=\"email\" class=\"form-control\" placeholder=\"email\">\n");
+      out.write("      <input type=\"text\" id=\"name\" name=\"name\" class=\"form-control\" placeholder=\"email\">\n");
       out.write("     </div>\n");
       out.write("     <div class=\"form-group\">\n");
       out.write("      <label class=\"control-label\" for=\"email\">Email</label>\n");
-      out.write("      <input type=\"text\" id=\"email\" class=\"form-control\" placeholder=\"email\">\n");
+      out.write("      <input type=\"text\" id=\"email\" name=\"email\" class=\"form-control\" placeholder=\"email\">\n");
       out.write("     </div>\n");
       out.write("     <div class=\"form-group\">\n");
-      out.write("      <label class=\"control-label\" for=\"email\">Password</label>\n");
-      out.write("      <input type=\"password\" id=\"password\" class=\"form-control\">\n");
+      out.write("      <label class=\"control-label\" for=\"address\">Address</label>\n");
+      out.write("      <input type=\"text\" id=\"email\" name=\"address\" class=\"form-control\" placeholder=\"address\">\n");
+      out.write("     </div>\n");
+      out.write("     <div class=\"form-group\">\n");
+      out.write("      <label class=\"control-label\" for=\"password\">Password</label>\n");
+      out.write("      <input type=\"password\" id=\"password\" name=\"password\" class=\"form-control\">\n");
       out.write("     </div>\n");
       out.write("     <div class=\"form-group\">\n");
       out.write("      <label class=\"control-label\" for=\"password_confirm\">password-confirm</label>\n");
-      out.write("      <input type=\"password\" id=\"password_confirm\" class=\"form-control\">\n");
+      out.write("      <input type=\"password\" id=\"password_confirm\" name=\"password_confirm\" class=\"form-control\">\n");
       out.write("     </div>\n");
       out.write("     <div class=\"form-group\">\n");
       out.write("       <input type=\"submit\" value=\"新規登録\" class=\"btn btn-primary\">\n");
@@ -99,9 +103,9 @@ public final class resistration_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("\n");
       out.write("\n");
       out.write("   <script src=\"http://code.jquery.com/jquery.js\"></script>\n");
-      out.write("    <script src=\"js/bootstrap.min.js\"></script>\n");
+      out.write("    <script src=\"bootstrap/js/bootstrap.min.js\"></script>\n");
       out.write("  </body>\n");
-      out.write("</html>");
+      out.write("</html>\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
