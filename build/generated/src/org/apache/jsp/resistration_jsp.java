@@ -49,7 +49,7 @@ public final class resistration_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("<html lang=\"ja\">\n");
       out.write("  <head>\n");
       out.write("    <meta charset=\"utf-8\">\n");
-      out.write("    <title>Bootstrapの練習</title>\n");
+      out.write("    <title>登録</title>\n");
       out.write("    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n");
       out.write("    <link href=\"bootstrap/css/bootstrap.min.css\" rel=\"stylesheet\" media=\"screen\">\n");
       out.write("  </head>\n");

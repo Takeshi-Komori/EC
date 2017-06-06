@@ -35,9 +35,9 @@ public class ResistrationConfirm extends HttpServlet {
      UserDataDTO ud = new UserDataDTO();
      
      ud.setName(request.getParameter("name"));
+     ud.setPassword(request.getParameter("password"));
      ud.setMail(request.getParameter("email"));
      ud.setAddress(request.getParameter("address"));
-     ud.setName(request.getParameter("name"));
         
      return ud;
     }
@@ -47,7 +47,7 @@ public class ResistrationConfirm extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            final String FORWARD_PATH = "resistraion_complete.jsp";
+            final String FORWARD_PATH = "resistration_complete.jsp";
             UserDataDTO ud = createDTO(request);
             
             UserDataDAO.getInstance().insert(ud);

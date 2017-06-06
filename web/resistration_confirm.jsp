@@ -19,7 +19,7 @@
     <meta charset="utf-8">
     <title>Bootstrapの練習</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
   </head>
   <body>
    <nav class="navbar navbar-default navbar-fixed-top">
@@ -48,7 +48,7 @@
        </tbody>
       </table>
      
-    <form action="ResistrationConfirm" style="float: right;">
+    <form action="ResistrationConfirm" style="float: right;" method="post">
      <input type="hidden" value="<%= name %>">
      <input type="hidden" value="<%= email %>">
      <input type="hidden" value="<%= address %>">
@@ -62,6 +62,6 @@
 
 
    <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
   </body>
 </html>

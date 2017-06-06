@@ -52,54 +52,75 @@ public class Search extends HttpServlet {
          DocumentBuilder documentBuilder = factory.newDocumentBuilder();
          Document document = documentBuilder.parse(uri);
          
-   
          
-         Element root = document.getDocumentElement();
-	 NodeList rootChildren = root.getChildNodes();
+//         URL url = new URL(url_str);
+//            BufferedReader reader = new BufferedReader(new InputStreamReader(url.openConnection().getInputStream()));
+//            StringBuffer responseBuffer = new StringBuffer();
+//            
+//            //URLのjsonからテキストを読み込む処理
+//            while (true) {
+//                String line = reader.readLine();
+//                if (line == null) {
+//                    break;
+//                }
+//                responseBuffer.append(line);
+//            }
+//            reader.close();
          
+         
+         
+         
+         
+         System.out.print("--------document----------");
+         System.out.print(document);
          System.out.print("------------------");
-         System.out.print(root.getElementsByTagName("Hit"));
-         System.out.print("------------------");
          
-         
-         for(int i=0; i < rootChildren.getLength(); i++) {
-	   Node node = rootChildren.item(i);
-           ResultBeans result = new ResultBeans();
-           
-           if (node.getNodeType() == Node.ELEMENT_NODE) {
-             Element element = (Element)node;
-             if (element.getNodeName().equals("Hit")) {
-                
-                result.setID(element.getAttribute("index"));
-                NodeList searchResultsChildren = node.getChildNodes();
-                
-                for (int j=0; j < searchResultsChildren.getLength(); j++) {
-			
-                    Node searchResultNode = searchResultsChildren.item(j);
-			
-                    if (searchResultNode.getNodeType() == Node.ELEMENT_NODE) {
-                           
-                        if (searchResultNode.getNodeName().equals("NAME")) {
-				result.setName(searchResultNode.getTextContent());
-			} else if (searchResultNode.getNodeName().equals("Image")) {
-                                NodeList imageInfos = searchResultNode.getChildNodes();
-                                
-                                for (int k=0; k < searchResultsChildren.getLength(); k++) {
-                                    if (searchResultNode.getNodeName().equals("Small") || searchResultNode.getNodeName().equals("Medium")) {
-                                        result.setImage(searchResultNode.getTextContent());
-                                    }
-                                }
-			} else if (searchResultNode.getNodeName().equals("Price")) {
-				result.setPrice(searchResultNode.getTextContent());
-			}                         
-                    }
-                    
-                }
-           }
-                        
-         }
-         resultInfos.add(result);
-       }
+//         Element root = document.getDocumentElement();
+//	 NodeList rootChildren = root.getChildNodes();
+//         
+//         System.out.print("------------------");
+//         System.out.print(root.getElementsByTagName("Hit"));
+//         System.out.print("------------------");
+//         
+//         
+//         for(int i=0; i < rootChildren.getLength(); i++) {
+//	   Node node = rootChildren.item(i);
+//           ResultBeans result = new ResultBeans();
+//           
+//           if (node.getNodeType() == Node.ELEMENT_NODE) {
+//             Element element = (Element)node;
+//             if (element.getNodeName().equals("Hit")) {
+//                
+//                result.setID(element.getAttribute("index"));
+//                NodeList searchResultsChildren = node.getChildNodes();
+//                
+//                for (int j=0; j < searchResultsChildren.getLength(); j++) {
+//			
+//                    Node searchResultNode = searchResultsChildren.item(j);
+//			
+//                    if (searchResultNode.getNodeType() == Node.ELEMENT_NODE) {
+//                           
+//                        if (searchResultNode.getNodeName().equals("NAME")) {
+//				result.setName(searchResultNode.getTextContent());
+//			} else if (searchResultNode.getNodeName().equals("Image")) {
+//                                NodeList imageInfos = searchResultNode.getChildNodes();
+//                                
+//                                for (int k=0; k < searchResultsChildren.getLength(); k++) {
+//                                    if (searchResultNode.getNodeName().equals("Small") || searchResultNode.getNodeName().equals("Medium")) {
+//                                        result.setImage(searchResultNode.getTextContent());
+//                                    }
+//                                }
+//			} else if (searchResultNode.getNodeName().equals("Price")) {
+//				result.setPrice(searchResultNode.getTextContent());
+//			}                         
+//                    }
+//                    
+//                }
+//           }
+//                        
+//         }
+//         resultInfos.add(result);
+//       }
        
 
        return resultInfos;
