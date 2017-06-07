@@ -49,10 +49,10 @@
       </table>
      
     <form action="ResistrationConfirm" style="float: right;" method="post">
-     <input type="hidden" value="<%= name %>">
-     <input type="hidden" value="<%= email %>">
-     <input type="hidden" value="<%= address %>">
-     <input type="hidden" value="<%= password %>">
+        <input type="hidden" name="name" value="<%= name %>">
+     <input type="hidden" name="email" value="<%= email %>">
+     <input type="hidden" name="address" value="<%= address %>">
+     <input type="hidden" name="password" value="<%= password %>">
      <input type="submit" name="" value="登録" class="btn btn-primary">
     </form>
     </div>

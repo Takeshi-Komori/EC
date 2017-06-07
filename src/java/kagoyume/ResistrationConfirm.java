@@ -7,6 +7,7 @@ package kagoyume;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -34,11 +35,17 @@ public class ResistrationConfirm extends HttpServlet {
     public UserDataDTO createDTO(HttpServletRequest request) {
      UserDataDTO ud = new UserDataDTO();
      
+     try {
+     request.setCharacterEncoding("UTF-8");
+     
      ud.setName(request.getParameter("name"));
      ud.setPassword(request.getParameter("password"));
      ud.setMail(request.getParameter("email"));
      ud.setAddress(request.getParameter("address"));
-        
+     
+     }catch (UnsupportedEncodingException e) {
+         System.out.print(e.getMessage());
+     } 
      return ud;
     }
     
