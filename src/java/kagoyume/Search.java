@@ -13,20 +13,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import javax.servlet.RequestDispatcher;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.util.ArrayList;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-import kagoyume.ResultBeans;
 
 import java.net.*;
 import java.io.*;
+import java.util.Map;
+import net.arnx.jsonic.JSON;
 
 /**
  *
@@ -43,49 +38,85 @@ public class Search extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
-    
-    
-    ArrayList connectWebAPI (String searchStr, String appid) throws SAXException, IOException, ParserConfigurationException {
-       ArrayList<ResultBeans> resultInfos = new ArrayList<ResultBeans>();
-          
-         String uri = "http://shopping.yahooapis.jp/ShoppingWebService/V1/itemSearch?appid="+appid+"&query="+searchStr;
-         
-         URL url = new URL(uri);
-         URLConnection connection = url.openConnection();
-         
-         InputStream inStream = connection.getInputStream();
-         BufferedReader input = new BufferedReader(new InputStreamReader(inStream));
+    ArrayList connectWebAPI(String searchStr, String appid) throws SAXException, IOException, ParserConfigurationException {
+        ArrayList<ResultBeans> resultInfos = new ArrayList<ResultBeans>();
 
-         System.out.print("----------------------------");
-         String line = "";
-         while ((line = input.readLine()) != null) {
-          System.out.println(line);
-         }
-         System.out.print("----------------------------");
-//       
+        String uri = "http://shopping.yahooapis.jp/ShoppingWebService/V1/itemSearch?appid=" + appid + "&query=" + searchStr;
 
-       return resultInfos;
+        URL url = new URL(uri);
+        URLConnection connection = url.openConnection();
+
+        InputStream inStream = connection.getInputStream();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inStream));
+        StringBuffer responseBuffer = new StringBuffer();
+
+        while (true) {
+            String line = reader.readLine();
+            if (line == null) {
+                break;
+            }
+            responseBuffer.append(line);
+        }
+        reader.close();
+
+        //取得したjsonテキストを文字列に変換
+        String jsonText = responseBuffer.toString();
+        
+        Map<String, Map<String, Object>> json = JSON.decode(jsonText);
+        
+        System.out.println("--------------------------------");
+        System.out.print(json);
+        System.out.println("--------------------------------");
+//      
+//        parse(jsonText);
+        
+
+        return resultInfos;
     }
-    
-    
+//
+//    private static void parse(String jsonText) {
+//        
+//
+//
+////        for (Map.Entry<String, Map<String, Object>> val : json.entrySet()) {
+////            // 自動で取得した要素を処理
+////            System.out.print((String)val.getKey());
+////            System.out.print("-------------");
+//////            out.print(val.getValue());
+//////            out.print("/");
+////        }
+//
+//       
+//            @SuppressWarnings("unchecked")
+//            Map<String, Object> result = ((Map<String, Object>) ((Map<String, Map<String, Object>>) json.get("ResultSet").get("0")).get("Result").get("0"));
+//
+//            String name = result.get("Name").toString();
+//            @SuppressWarnings("unchecked")
+//            String imageUrl = ((Map<String, Object>) result.get("Image")).get("Medium").toString();
+//
+//            System.out.println("--------------------------------");
+//            System.out.println(imageUrl);
+//            System.out.println("--------------------------------");
+//       
+//    }
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException, SAXException, ParserConfigurationException {
-         response.setContentType("text/html;charset=UTF-8");
-         try (PrintWriter out = response.getWriter()) {
-         String result = "search.jsp";
-         request.setCharacterEncoding("UTF-8");
-         String searchStr = request.getParameter("search");
-         String appid = "dj0zaiZpPWhqd2pObWg4MGxZQSZzPWNvbnN1bWVyc2VjcmV0Jng9Nzg-";
-         
-         ArrayList<ResultBeans> results = connectWebAPI(searchStr, appid);
-         
-         request.setAttribute("GetDataFromAPI", results);
-            
-         RequestDispatcher rq = request.getRequestDispatcher(result);
-         rq.forward(request, response);
-        } 
-           
+            throws ServletException, IOException, SAXException, ParserConfigurationException {
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            String result = "search.jsp";
+            request.setCharacterEncoding("UTF-8");
+            String searchStr = request.getParameter("search");
+            String appid = "dj0zaiZpPWhqd2pObWg4MGxZQSZzPWNvbnN1bWVyc2VjcmV0Jng9Nzg-";
+
+            ArrayList<ResultBeans> results = connectWebAPI(searchStr, appid);
+
+            request.setAttribute("GetDataFromAPI", results);
+
+            RequestDispatcher rq = request.getRequestDispatcher(result);
+            rq.forward(request, response);
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -102,12 +133,12 @@ public class Search extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (SAXException e){
-            
-        } catch (ParserConfigurationException e){
-            
+        } catch (SAXException e) {
+
+        } catch (ParserConfigurationException e) {
+
         }
-        
+
     }
 
     /**
@@ -123,10 +154,10 @@ public class Search extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (SAXException e){
-            
-        } catch (ParserConfigurationException e){
-            
+        } catch (SAXException e) {
+
+        } catch (ParserConfigurationException e) {
+
         }
     }
 

@@ -7,16 +7,19 @@ package kagoyume;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author nanameue
+ * @author komoritakeshi
  */
-public class login extends HttpServlet {
+public class LoginJudge extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,6 +35,32 @@ public class login extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
+            final String FORWARD_PATH = "top.jsp";
+            final String ERROR_FORWARD_PATH = "login.jsp";
+
+            request.setCharacterEncoding("UTF-8");
+            String email = request.getParameter("email");
+            String pass = request.getParameter("password");
+
+            UserDataDTO ud = UserDataDAO.getInstance().select(email, pass);
+
+            if (ud != null) {
+                HttpSession hs = request.getSession();
+                hs.setAttribute("login_user", ud);
+
+                request.setAttribute("success", "success");
+
+                RequestDispatcher rd = request.getRequestDispatcher(FORWARD_PATH);
+                rd.forward(request, response);
+            } else {
+                request.setAttribute("fail", "fail");
+
+                RequestDispatcher rd = request.getRequestDispatcher(ERROR_FORWARD_PATH);
+                rd.forward(request, response);
+            }
+
+        } catch (SQLException e) {
+            System.out.print(e.getMessage());
         }
     }
 

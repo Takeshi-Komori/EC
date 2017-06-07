@@ -9,6 +9,7 @@ package kagoyume;
 import base.DBManager;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 
@@ -46,5 +47,39 @@ public class UserDataDAO {
             }
         }
 
+    }
+    
+    public UserDataDTO select(String email, String pass) throws SQLException{
+        Connection con = null;
+        PreparedStatement st = null;
+        try{
+            con = DBManager.getConnection();
+            st =  con.prepareStatement("select * from user_t where mail = ? and password = ?");
+            st.setString(1, email);
+            st.setString(2, pass);
+           
+            ResultSet rs = st.executeQuery();
+            UserDataDTO ud = new UserDataDTO();
+            
+            if (st.executeQuery() == null) {
+                return null;
+            }
+            
+            while(rs.next()) {
+               ud.setUserID(rs.getInt("user_id"));
+               ud.setName(rs.getString("name"));
+               ud.setAddress(rs.getString("address"));
+            }
+            
+            System.out.println("select completed");
+            return ud;
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+            throw new SQLException(e);
+        }finally{
+            if(con != null){
+                con.close();
+            }
+        }
     }
 }
