@@ -7,11 +7,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>登録</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
     <body>
      <nav class="navbar navbar-default navbar-fixed-top">
       <div class="navbar-header">
@@ -25,9 +27,14 @@
        </ul>
      </div>
      </nav>
+          <div class="container">
+              <form style="margin-top: 104px;" action="Search" method="get"> 
+             <input type="text" name="search">
+             <input type="submit" value="送信">
+            </form>
+          </div>
         
-            <input type="text" name="search">
-            <input type="submit" value="送信">
-        </form>    
+     <script src="http://code.jquery.com/jquery.js"></script>
+     <script src="bootstrap/js/bootstrap.min.js"></script>
     </body>
 </html>

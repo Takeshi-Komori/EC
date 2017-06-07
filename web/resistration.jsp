@@ -5,8 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="ja">
   <head>
     <meta charset="utf-8">
@@ -63,7 +62,7 @@
 
 
 
-   <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="http://code.jquery.com/jquery.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
   </body>
 </html>
