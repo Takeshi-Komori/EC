@@ -22,6 +22,8 @@ import java.net.*;
 import java.io.*;
 import java.util.Map;
 import net.arnx.jsonic.JSON;
+import net.arnx.jsonic.JSONEventType;
+import net.arnx.jsonic.JSONReader;
 
 /**
  *
@@ -38,10 +40,9 @@ public class Search extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    ArrayList connectWebAPI(String searchStr, String appid) throws SAXException, IOException, ParserConfigurationException {
-        ArrayList<ResultBeans> resultInfos = new ArrayList<ResultBeans>();
+    private ArrayList<ItemBeans> connectWebAPI(String searchStr, String appid) throws SAXException, IOException, ParserConfigurationException {
 
-        String uri = "http://shopping.yahooapis.jp/ShoppingWebService/V1/itemSearch?appid=" + appid + "&query=" + searchStr;
+        String uri = "http://shopping.yahooapis.jp/ShoppingWebService/V1/json/itemSearch?appid=" + appid + "&query=" + searchStr;
 
         URL url = new URL(uri);
         URLConnection connection = url.openConnection();
@@ -57,48 +58,34 @@ public class Search extends HttpServlet {
             }
             responseBuffer.append(line);
         }
+        
         reader.close();
 
         //取得したjsonテキストを文字列に変換
         String jsonText = responseBuffer.toString();
+        return parse(jsonText);
+    }
+//
+    private ArrayList<ItemBeans> parse(String jsonText) {
         
         Map<String, Map<String, Object>> json = JSON.decode(jsonText);
         
-        System.out.println("--------------------------------");
-        System.out.print(json);
-        System.out.println("--------------------------------");
-//      
-//        parse(jsonText);
-        
+        ArrayList<ItemBeans> ibArray = new ArrayList<ItemBeans>();
 
-        return resultInfos;
+            for (int i = 0; i< 20; i++) {
+               ItemBeans itemBeans = new ItemBeans();
+               Map<String, Object> result = ((Map<String, Object>) ((Map<String, Map<String, Object>>) json.get("ResultSet").get("0")).get("Result").get(String.valueOf(i)));
+
+               itemBeans.setName(result.get("Name").toString());
+               itemBeans.setDescription(result.get("Description").toString());
+               itemBeans.setPrice(((Map<String, Object>) result.get("PriceLabel")).get("DefaultPrice").toString());
+               itemBeans.setImage(((Map<String, Object>) result.get("Image")).get("Medium").toString());
+               
+               ibArray.add(itemBeans);
+            }    
+            
+            return ibArray;
     }
-//
-//    private static void parse(String jsonText) {
-//        
-//
-//
-////        for (Map.Entry<String, Map<String, Object>> val : json.entrySet()) {
-////            // 自動で取得した要素を処理
-////            System.out.print((String)val.getKey());
-////            System.out.print("-------------");
-//////            out.print(val.getValue());
-//////            out.print("/");
-////        }
-//
-//       
-//            @SuppressWarnings("unchecked")
-//            Map<String, Object> result = ((Map<String, Object>) ((Map<String, Map<String, Object>>) json.get("ResultSet").get("0")).get("Result").get("0"));
-//
-//            String name = result.get("Name").toString();
-//            @SuppressWarnings("unchecked")
-//            String imageUrl = ((Map<String, Object>) result.get("Image")).get("Medium").toString();
-//
-//            System.out.println("--------------------------------");
-//            System.out.println(imageUrl);
-//            System.out.println("--------------------------------");
-//       
-//    }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SAXException, ParserConfigurationException {
@@ -109,7 +96,7 @@ public class Search extends HttpServlet {
             String searchStr = request.getParameter("search");
             String appid = "dj0zaiZpPWhqd2pObWg4MGxZQSZzPWNvbnN1bWVyc2VjcmV0Jng9Nzg-";
 
-            ArrayList<ResultBeans> results = connectWebAPI(searchStr, appid);
+            ArrayList<ItemBeans> results = connectWebAPI(searchStr, appid);
 
             request.setAttribute("GetDataFromAPI", results);
 

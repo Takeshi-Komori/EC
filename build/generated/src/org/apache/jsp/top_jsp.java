@@ -70,7 +70,7 @@ public final class top_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        ");
  if (request.getAttribute("success") != null){
       out.write("\n");
-      out.write("        <div style=\"margin-top: 104px;\" class=\"alert alert-info\">ログインに成功しました</div>\n");
+      out.write("        <div style=\"margin-top: 104px; marin-left: 15px;  width: 800px;\" class=\"alert alert-success\">ログインに成功しました</div>\n");
       out.write("        <div class=\"container\">\n");
       out.write("            <form style=\"margin-top: 20px;\" action=\"Search\" method=\"get\"> \n");
       out.write("                <input type=\"text\" name=\"search\">\n");

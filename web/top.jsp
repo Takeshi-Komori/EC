@@ -28,7 +28,7 @@
             </div>
         </nav>
         <% if (request.getAttribute("success") != null){%>
-        <div style="margin-top: 104px; width: 800px;" class="alert alert-success">ログインに成功しました</div>
+        <div style="margin-top: 104px; marin-left: 15px;  width: 800px;" class="alert alert-success">ログインに成功しました</div>
         <div class="container">
             <form style="margin-top: 20px;" action="Search" method="get"> 
                 <input type="text" name="search">
