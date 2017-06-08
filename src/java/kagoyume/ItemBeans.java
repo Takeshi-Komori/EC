@@ -15,35 +15,35 @@ public class ItemBeans {
     private String image;
     private String price;
     
-    String getName() {
+    public String getName() {
         return this.name;
     }
     
-    void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
     
-    String getDescription() {
+    public String getDescription() {
         return this.description;
     }
     
-    void setDescription(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
     
-    String getImage() {
+    public String getImage() {
         return this.image;
     }
     
-    void setImage(String image) {
+    public void setImage(String image) {
         this.image = image;
     }
     
-    String getPrice() {
+    public String getPrice() {
         return this.price;
     }
     
-    void setPrice(String price) {
+    public void setPrice(String price) {
         this.price = price;
     }
     
