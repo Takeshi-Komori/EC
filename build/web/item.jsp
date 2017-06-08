@@ -16,7 +16,7 @@
     
     ItemBeans selectIB = null;
     for (int i = 0; i < getInfos.size(); i++) {
-        if (request.getParameter("id") == getInfos.get(i).getMerchantID()) {
+        if (request.getParameter("id").equals(getInfos.get(i).getMerchantID())) {
             selectIB = getInfos.get(i);
         }
     }
@@ -46,8 +46,8 @@
                 </ul>
             </div>
         </nav>
-        <div class="container">
-            <h2 style="marigin-top: 104px;"><%= selectIB.getName() %></h2>
+        <div class="container" style="margin-top: 80px;">
+            <h2 style="marigin-top: 20px"><%= selectIB.getName() %></h2>
             <img src=<%= selectIB.getImage() %> >
             <h4><%= selectIB.getDescription() %></h4>
 
