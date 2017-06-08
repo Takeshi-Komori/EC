@@ -7,9 +7,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="kagoyume.ItemBeans" %>
 <%@page import="java.util.ArrayList" %>
+<%@page import="javax.servlet.http.HttpSession" %>
 
 <%
-    ArrayList<ItemBeans> getInfos = (ArrayList<ItemBeans>) request.getAttribute("GetDataFromAPI");
+    HttpSession hs = request.getSession();
+    ArrayList<ItemBeans> getInfos = (ArrayList<ItemBeans>) hs.getAttribute("GetDataFromAPI");
 
 %>
 <!DOCTYPE html>
@@ -42,7 +44,7 @@
        </thead>
        <tbody>
           <% for (int i = 0; i < getInfos.size(); i++) { %>
-          <tr><td><%= getInfos.get(i).getName() %></td><td><img src=<%= getInfos.get(i).getImage() %> ></td><td><%= getInfos.get(i).getDescription() %></td><td><%= getInfos.get(i).getPrice() %></td></tr>
+          <tr><td><a href="item.jsp?id=<%= getInfos.get(i).getMerchantID() %>"><%= getInfos.get(i).getName() %></a></td><td><img src=<%= getInfos.get(i).getImage() %> ></td><td><%= getInfos.get(i).getDescription() %></td><td><%= getInfos.get(i).getPrice() %></td></tr>
           <% } %>
        </tbody>
      </table> 

@@ -24,7 +24,7 @@ import org.xml.sax.SAXException;
  */
 public class YahooAPILogic {
 
-public static ArrayList<ItemBeans> connectWebAPI(String searchStr, String appid) throws SAXException, IOException, ParserConfigurationException {
+    public static ArrayList<ItemBeans> connectWebAPI(String searchStr, String appid) throws SAXException, IOException, ParserConfigurationException {
 
         String uri = "http://shopping.yahooapis.jp/ShoppingWebService/V1/json/itemSearch?appid=" + appid + "&query=" + searchStr;
 
@@ -42,7 +42,7 @@ public static ArrayList<ItemBeans> connectWebAPI(String searchStr, String appid)
             }
             responseBuffer.append(line);
         }
-        
+
         reader.close();
 
         //取得したjsonテキストを文字列に変換
@@ -50,32 +50,32 @@ public static ArrayList<ItemBeans> connectWebAPI(String searchStr, String appid)
         return parse(jsonText);
     }
 //
+
     private static ArrayList<ItemBeans> parse(String jsonText) {
-        
+
         Map<String, Map<String, Object>> json = JSON.decode(jsonText);
-        
+
         ArrayList<ItemBeans> ibArray = new ArrayList<ItemBeans>();
 
-            for (int i = 0; i< 20; i++) {
-               ItemBeans itemBeans = new ItemBeans();
-               Map<String, Object> result = ((Map<String, Object>) ((Map<String, Map<String, Object>>) json.get("ResultSet").get("0")).get("Result").get(String.valueOf(i)));
+        for (int i = 0; i < 20; i++) {
+            ItemBeans itemBeans = new ItemBeans();
+            Map<String, Object> result = ((Map<String, Object>) ((Map<String, Map<String, Object>>) json.get("ResultSet").get("0")).get("Result").get(String.valueOf(i)));
 
-               itemBeans.setName(result.get("Name").toString());
-               itemBeans.setDescription(result.get("Description").toString());
-               itemBeans.setPrice(((Map<String, Object>) result.get("PriceLabel")).get("DefaultPrice").toString());
-               itemBeans.setImage(((Map<String, Object>) result.get("Image")).get("Medium").toString());
-               itemBeans.setMerchantID(createMerchantID());
-               
-               ibArray.add(itemBeans);
-            }    
-            
-            return ibArray;
+            itemBeans.setName(result.get("Name").toString());
+            itemBeans.setDescription(result.get("Description").toString());
+            itemBeans.setPrice(((Map<String, Object>) result.get("PriceLabel")).get("DefaultPrice").toString());
+            itemBeans.setImage(((Map<String, Object>) result.get("Image")).get("Medium").toString());
+            itemBeans.setMerchantID(createMerchantID());
+
+            ibArray.add(itemBeans);
+        }
+
+        return ibArray;
     }
-    
-    private static UUID createMerchantID () {
-        UUID id = UUID.randomUUID();
+
+    private static String createMerchantID() {
+        String id = UUID.randomUUID().toString();
         return id;
     }
 
-    
 }

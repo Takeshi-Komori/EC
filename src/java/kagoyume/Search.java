@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.RequestDispatcher;
 import javax.xml.parsers.ParserConfigurationException;
 import java.util.ArrayList;
+import javax.servlet.http.HttpSession;
 
 import org.xml.sax.SAXException;
 
@@ -46,7 +47,10 @@ public class Search extends HttpServlet {
 
             ArrayList<ItemBeans> results = YahooAPILogic.connectWebAPI(searchStr, appid);
 
-            request.setAttribute("GetDataFromAPI", results);
+//            request.setAttribute("GetDataFromAPI", results);
+            
+            HttpSession hs = request.getSession();
+            hs.setAttribute("GetDataFromAPI", results);
 
             RequestDispatcher rq = request.getRequestDispatcher(result);
             rq.forward(request, response);

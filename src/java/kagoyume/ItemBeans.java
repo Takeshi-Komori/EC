@@ -16,7 +16,7 @@ public class ItemBeans {
     private String description;
     private String image;
     private String price;
-    private UUID merchantID;
+    private String merchantID;
     
     public String getName() {
         return this.name;
@@ -50,11 +50,11 @@ public class ItemBeans {
         this.price = price;
     }
     
-    public UUID getMerchantID() {
+    public String getMerchantID() {
         return this.merchantID;
     }
     
-    public void setMerchantID(UUID merchantID) {
+    public void setMerchantID(String merchantID) {
         this.merchantID = merchantID;
     }
     
