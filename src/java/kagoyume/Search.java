@@ -18,12 +18,6 @@ import java.util.ArrayList;
 
 import org.xml.sax.SAXException;
 
-import java.net.*;
-import java.io.*;
-import java.util.Map;
-import net.arnx.jsonic.JSON;
-import net.arnx.jsonic.JSONEventType;
-import net.arnx.jsonic.JSONReader;
 
 /**
  *
@@ -40,52 +34,6 @@ public class Search extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    private ArrayList<ItemBeans> connectWebAPI(String searchStr, String appid) throws SAXException, IOException, ParserConfigurationException {
-
-        String uri = "http://shopping.yahooapis.jp/ShoppingWebService/V1/json/itemSearch?appid=" + appid + "&query=" + searchStr;
-
-        URL url = new URL(uri);
-        URLConnection connection = url.openConnection();
-
-        InputStream inStream = connection.getInputStream();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(inStream));
-        StringBuffer responseBuffer = new StringBuffer();
-
-        while (true) {
-            String line = reader.readLine();
-            if (line == null) {
-                break;
-            }
-            responseBuffer.append(line);
-        }
-        
-        reader.close();
-
-        //取得したjsonテキストを文字列に変換
-        String jsonText = responseBuffer.toString();
-        return parse(jsonText);
-    }
-//
-    private ArrayList<ItemBeans> parse(String jsonText) {
-        
-        Map<String, Map<String, Object>> json = JSON.decode(jsonText);
-        
-        ArrayList<ItemBeans> ibArray = new ArrayList<ItemBeans>();
-
-            for (int i = 0; i< 20; i++) {
-               ItemBeans itemBeans = new ItemBeans();
-               Map<String, Object> result = ((Map<String, Object>) ((Map<String, Map<String, Object>>) json.get("ResultSet").get("0")).get("Result").get(String.valueOf(i)));
-
-               itemBeans.setName(result.get("Name").toString());
-               itemBeans.setDescription(result.get("Description").toString());
-               itemBeans.setPrice(((Map<String, Object>) result.get("PriceLabel")).get("DefaultPrice").toString());
-               itemBeans.setImage(((Map<String, Object>) result.get("Image")).get("Medium").toString());
-               
-               ibArray.add(itemBeans);
-            }    
-            
-            return ibArray;
-    }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SAXException, ParserConfigurationException {
@@ -96,7 +44,7 @@ public class Search extends HttpServlet {
             String searchStr = request.getParameter("search");
             String appid = "dj0zaiZpPWhqd2pObWg4MGxZQSZzPWNvbnN1bWVyc2VjcmV0Jng9Nzg-";
 
-            ArrayList<ItemBeans> results = connectWebAPI(searchStr, appid);
+            ArrayList<ItemBeans> results = YahooAPILogic.connectWebAPI(searchStr, appid);
 
             request.setAttribute("GetDataFromAPI", results);
 

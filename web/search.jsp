@@ -42,7 +42,7 @@
        </thead>
        <tbody>
           <% for (int i = 0; i < getInfos.size(); i++) { %>
-          <tr><td><%= getInfos.get(i).getName() %></td><td><img src=<%= getInfos.get(i).getImage() %> ></td><td><%= getInfos.get(i).getName() %></td><td><%= getInfos.get(i).getPrice() %></td></tr>
+          <tr><td><%= getInfos.get(i).getName() %></td><td><img src=<%= getInfos.get(i).getImage() %> ></td><td><%= getInfos.get(i).getDescription() %></td><td><%= getInfos.get(i).getPrice() %></td></tr>
           <% } %>
        </tbody>
      </table> 

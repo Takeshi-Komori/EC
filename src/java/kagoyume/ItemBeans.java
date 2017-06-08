@@ -5,6 +5,8 @@
  */
 package kagoyume;
 
+import java.util.UUID;
+
 /**
  *
  * @author komoritakeshi
@@ -14,6 +16,7 @@ public class ItemBeans {
     private String description;
     private String image;
     private String price;
+    private UUID merchantID;
     
     public String getName() {
         return this.name;
@@ -47,5 +50,12 @@ public class ItemBeans {
         this.price = price;
     }
     
+    public UUID getMerchantID() {
+        return this.merchantID;
+    }
+    
+    public void setMerchantID(UUID merchantID) {
+        this.merchantID = merchantID;
+    }
     
 }
