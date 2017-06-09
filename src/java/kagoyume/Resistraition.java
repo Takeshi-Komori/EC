@@ -7,7 +7,6 @@ package kagoyume;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +18,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author komoritakeshi
  */
-public class LoginJudge extends HttpServlet {
+public class Resistraition extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,40 +32,25 @@ public class LoginJudge extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
+        request.setCharacterEncoding("UTF-8");
+        HttpSession hs = request.getSession();
+        UserDataBeans udb = new UserDataBeans();
+
         try (PrintWriter out = response.getWriter()) {
-
-            final String FORWARD_PATH = "top.jsp";
-            final String ERROR_FORWARD_PATH = "login.jsp";
-
-            request.setCharacterEncoding("UTF-8");
-            String email = request.getParameter("email");
-            String pass = request.getParameter("password");
-
-            UserDataBeans udb = new UserDataBeans();
-
-            UserDataDAO.getInstance().select(email, pass, udb);
-
-            if (udb.getName() == null || udb.getEmail() == null) {
-
-                request.setAttribute("fail", "fail");
-
-                RequestDispatcher rd = request.getRequestDispatcher(ERROR_FORWARD_PATH);
-                rd.forward(request, response);
-
-            } else {
-
-                HttpSession hs = request.getSession();
-                hs.setAttribute("login_user", udb);
-                
-                request.setAttribute("success", "success");
-
-                RequestDispatcher rd = request.getRequestDispatcher(FORWARD_PATH);
-                rd.forward(request, response);
-
+            if (hs.getAttribute("ACCESS_NUMBER") == null
+                    || (int) hs.getAttribute("ACCESS_NUMBER") == Integer.parseInt(request.getParameter("ACCESS_NUMBER"))) {
+                out.print("不正なアクセスです");
             }
 
-        } catch (SQLException e) {
-            System.out.print(e.getMessage());
+            udb.setName(request.getParameter("name"));
+            udb.setEmail(request.getParameter("email"));
+            udb.setAddress(request.getParameter("address"));
+            udb.setPassword(request.getParameter("password"));
+
+            hs.setAttribute("UserDataBeans", udb);
+
+            RequestDispatcher rd = request.getRequestDispatcher("resistraion_confirm.jsp");
         }
     }
 

@@ -14,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -30,38 +31,29 @@ public class ResistrationConfirm extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
-    
-    public UserDataDTO createDTO(HttpServletRequest request) {
-     UserDataDTO ud = new UserDataDTO();
-     
-     try {
-     request.setCharacterEncoding("UTF-8");
-     
-     ud.setName(request.getParameter("name"));
-     ud.setPassword(request.getParameter("password"));
-     ud.setMail(request.getParameter("email"));
-     ud.setAddress(request.getParameter("address"));
-     
-     }catch (UnsupportedEncodingException e) {
-         System.out.print(e.getMessage());
-     } 
-     return ud;
-    }
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
+        final String FORWARD_PATH = "WEB-INF/resistration_complete.jsp";
+        HttpSession hs = request.getSession();
+
+        UserDataDTO ud = new UserDataDTO();
+        UserDataBeans udb = (UserDataBeans) hs.getAttribute("UserDataBeans");
+
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            final String FORWARD_PATH = "resistration_complete.jsp";
-            UserDataDTO ud = createDTO(request);
-            
+            if (hs.getAttribute("ACCESS_NUMBER") == null
+                    || (int) hs.getAttribute("ACCESS_NUMBER") == Integer.parseInt(request.getParameter("ACCESS_NUMBER"))) {
+                out.print("不正なアクセスです");
+            }
+
+            udb.UD2DTOMapping(ud);
             UserDataDAO.getInstance().insert(ud);
-            request.setAttribute("USER_INFO", ud);
-            
+
             RequestDispatcher rd = request.getRequestDispatcher(FORWARD_PATH);
             rd.forward(request, response);
+
         } catch (SQLException e) {
             System.out.print(e.getMessage());
         } catch (Exception e) {

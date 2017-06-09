@@ -12,6 +12,14 @@
         <servlet-name>LoginJudge</servlet-name>
         <servlet-class>kagoyume.LoginJudge</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AccessChecker</servlet-name>
+        <servlet-class>kagoyume.AccessChecker</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Resistraition</servlet-name>
+        <servlet-class>kagoyume.Resistraition</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Search</servlet-name>
         <url-pattern>/Search</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>LoginJudge</servlet-name>
         <url-pattern>/LoginJudge</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AccessChecker</servlet-name>
+        <url-pattern>/AccessChecker</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Resistraition</servlet-name>
+        <url-pattern>/Resistraition</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

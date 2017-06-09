@@ -32,7 +32,7 @@ public class UserDataDAO {
             st =  con.prepareStatement("INSERT INTO user_t(name,password,mail,address,newDate) VALUES(?,?,?,?,?)");
             st.setString(1, ud.getName());
             st.setString(2, ud.getPassword());
-            st.setString(3, ud.getMail());
+            st.setString(3, ud.getEmail());
             st.setString(4, ud.getAddress());
             st.setTimestamp(5, new Timestamp(System.currentTimeMillis()));
            
@@ -49,7 +49,7 @@ public class UserDataDAO {
 
     }
     
-    public UserDataDTO select(String email, String pass) throws SQLException{
+    public void select(String email, String pass, UserDataBeans udb) throws SQLException{
         Connection con = null;
         PreparedStatement st = null;
         try{
@@ -59,20 +59,14 @@ public class UserDataDAO {
             st.setString(2, pass);
            
             ResultSet rs = st.executeQuery();
-            UserDataDTO ud = new UserDataDTO();
-            
-            if (st.executeQuery() == null) {
-                return null;
-            }
-            
+       
             while(rs.next()) {
-               ud.setUserID(rs.getInt("user_id"));
-               ud.setName(rs.getString("name"));
-               ud.setAddress(rs.getString("address"));
+//               udb.setUserID(rs.getInt("user_id"));
+               udb.setName(rs.getString("name"));
+               udb.setAddress(rs.getString("address"));
             }
             
             System.out.println("select completed");
-            return ud;
         }catch(SQLException e){
             System.out.println(e.getMessage());
             throw new SQLException(e);

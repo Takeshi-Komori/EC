@@ -13,7 +13,7 @@ public class UserDataDTO {
     private int userID;
     private String name;
     private String password;
-    private String mail;
+    private String email;
     private String address;
     private int total;
     private Timestamp newDate;
@@ -43,11 +43,11 @@ public class UserDataDTO {
         this.password = password;
     }
     
-    public String getMail(){
-        return mail;
+    public String getEmail(){
+        return email;
     }
-    public void setMail(String mail){
-        this.mail = mail;
+    public void setEmail(String email){
+        this.email = email;
     }
     
     public String getAddress(){

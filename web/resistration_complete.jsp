@@ -36,7 +36,7 @@
       <div class="container">
         <h1>以上の内容で登録しました！</h1>
         <h2><%= ud.getName() %></h2>
-        <h2><%= ud.getMail() %></h2>
+        <h2><%= ud.getEmail() %></h2>
         <h2><%= ud.getAddress() %></h2>
         <h2><%= ud.getPassword() %></h2>
       </div>

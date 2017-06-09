@@ -7,7 +7,6 @@ package kagoyume;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +18,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author komoritakeshi
  */
-public class LoginJudge extends HttpServlet {
+public class AccessChecker extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,39 +33,9 @@ public class LoginJudge extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
-            final String FORWARD_PATH = "top.jsp";
-            final String ERROR_FORWARD_PATH = "login.jsp";
-
-            request.setCharacterEncoding("UTF-8");
-            String email = request.getParameter("email");
-            String pass = request.getParameter("password");
-
-            UserDataBeans udb = new UserDataBeans();
-
-            UserDataDAO.getInstance().select(email, pass, udb);
-
-            if (udb.getName() == null || udb.getEmail() == null) {
-
-                request.setAttribute("fail", "fail");
-
-                RequestDispatcher rd = request.getRequestDispatcher(ERROR_FORWARD_PATH);
-                rd.forward(request, response);
-
-            } else {
-
-                HttpSession hs = request.getSession();
-                hs.setAttribute("login_user", udb);
-                
-                request.setAttribute("success", "success");
-
-                RequestDispatcher rd = request.getRequestDispatcher(FORWARD_PATH);
-                rd.forward(request, response);
-
-            }
-
-        } catch (SQLException e) {
-            System.out.print(e.getMessage());
+            HttpSession hs = request.getSession();
+            hs.setAttribute("ACCESS_NUMBER", (int)Math.random() * 1000);
+            RequestDispatcher rd = request.getRequestDispatcher("resistration.jsp");
         }
     }
 

@@ -62,7 +62,7 @@
                 </div>
             </form>
             <% } %>
-            <a href="resitration.jsp">新規登録</a>
+            <a href="kagoyume/AccessChecker">新規登録</a>
 
             <script src="http://code.jquery.com/jquery.js"></script>
             <script src="bootstrap/js/bootstrap.min.js"></script>
