@@ -78,6 +78,7 @@ public class ItemBeans {
     
     public void ID2DTOMapping(ItemDataDTO ido, Integer userID) {
         ido.setUserID(userID);
+        ido.setName(this.name);
         ido.setItemCode(this.itemID);
         ido.setDeliveryType(this.deliveryType);
         ido.setImage(this.image);

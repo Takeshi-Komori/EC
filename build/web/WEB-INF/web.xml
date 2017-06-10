@@ -32,6 +32,10 @@
         <servlet-name>BuyComplete</servlet-name>
         <servlet-class>kagoyume.BuyComplete</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MyPage</servlet-name>
+        <servlet-class>kagoyume.MyPage</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Search</servlet-name>
         <url-pattern>/Search</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>BuyComplete</servlet-name>
         <url-pattern>/BuyComplete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MyPage</servlet-name>
+        <url-pattern>/MyPage</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

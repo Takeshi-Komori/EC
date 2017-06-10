@@ -7,10 +7,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="javax.servlet.http.HttpSession" %>
 <%@page import="kagoyume.UserDataBeans" %>
+<%@page import="java.util.ArrayList" %>
+<%@page import="kagoyume.ItemBeans" %>
 
 <%
     HttpSession hs = request.getSession();
     UserDataBeans udb = (UserDataBeans)hs.getAttribute("LOGIN_USER");
+    ArrayList<ItemBeans> ibArray = (ArrayList<ItemBeans>)hs.getAttribute("ITEM_HISTORY");
 
 %>
 <!DOCTYPE html>
@@ -70,14 +73,14 @@
             <h3 style="margin-top: 100px; text-align: center; margin-bottom: 36px;"><%= udb.getName() %>様の購入履歴</h3>
             <table class="table" style="width: 800px; margin: 0 auto 0 auto;">
                 <thead>
-                    <tr><th>購入日</th><th>商品</th><th>値段</th></tr>
+                    <tr><th>購入日</th><th>商品</th><th></th></tr>
                 </thead>
                 <tbody>
-                    <tr><td>1月1日</td><td><p style="float: left;">からあげクン</p><img style="width: 146px; height: 146px; margin-left: 100px; float: left;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTORpJ71yfBlnRDFSMNlE4EjV8v4xuOQnVtS-V4GaDfRQFl9eOR"></td><td>1000円</td></tr>
-                    <tr><td>1月1日</td><td><p style="float: left;">からあげクン</p><img style="width: 146px; height: 146px; margin-left: 100px; float: left;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTORpJ71yfBlnRDFSMNlE4EjV8v4xuOQnVtS-V4GaDfRQFl9eOR"></td><td>1000円</td></tr>
-                    <tr><td>1月1日</td><td><p style="float: left;">からあげクン</p><img style="width: 146px; height: 146px; margin-left: 100px; float: left;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTORpJ71yfBlnRDFSMNlE4EjV8v4xuOQnVtS-V4GaDfRQFl9eOR"></td><td>1000円</td></tr>
-                    <tr><td>1月1日</td><td><p style="float: left;">からあげクン</p><img style="width: 146px; height: 146px; margin-left: 100px; float: left;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTORpJ71yfBlnRDFSMNlE4EjV8v4xuOQnVtS-V4GaDfRQFl9eOR"></td><td>1000円</td></tr>
-                    <tr><td>1月1日</td><td><p style="float: left;">からあげクン</p><img style="width: 146px; height: 146px; margin-left: 100px; float: left;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTORpJ71yfBlnRDFSMNlE4EjV8v4xuOQnVtS-V4GaDfRQFl9eOR"></td><td>1000円</td></tr>
+                    
+                    <% for(int i =0; i < ibArray.size(); i++) { %>
+                    <tr><td>1月1日</td><td><p style="float: left;"><%= ibArray.get(i).getName() %></p><img style="width: 146px; height: 146px; margin-left: 100px; float: left;" src=<%= ibArray.get(i).getImage() %>></td><td><></td></tr>
+                    <%  } %>
+                    
                 </tbody>
             </table>
         </div>

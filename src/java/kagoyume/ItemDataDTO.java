@@ -14,6 +14,8 @@ public class ItemDataDTO {
     private Integer deliveryType;
     private Integer userID;
     private String image;
+    private String name;
+            
     
     public void setItemCode(String itemCode) {
         this.itemCode = itemCode;
@@ -47,4 +49,11 @@ public class ItemDataDTO {
         this.image = image;
     }
     
+    public String getName() {
+        return this.name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
 }
