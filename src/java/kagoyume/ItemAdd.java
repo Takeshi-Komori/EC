@@ -7,10 +7,13 @@ package kagoyume;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -30,9 +33,31 @@ public class ItemAdd extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             request.setCharacterEncoding("UTF-8");
+            ItemBeans ib = new ItemBeans();
+            HttpSession hs = request.getSession();
+            final String FORWARD_PATH = "WEB-INF/add_complete.jsp";
+        
+            ib.setItemID(request.getParameter("itemID"));
+            ib.setName(request.getParameter("itemName"));
+            ib.setPrice(request.getParameter("itemPrice"));
+            ib.setImage(request.getParameter("itemImage"));
+            
+            if (hs.getAttribute("ItemBeansBox") == null) {
+                ArrayList<ItemBeans> itemBeansBox = new ArrayList<ItemBeans>();
+                itemBeansBox.add(ib);
+                hs.setAttribute("ItemBeansBox", itemBeansBox);
+            } else {
+                ArrayList<ItemBeans> itemBeansBox = (ArrayList<ItemBeans>)hs.getAttribute("ItemBeansBox");
+                itemBeansBox.add(ib);
+                hs.setAttribute("ItemBeansBox", itemBeansBox);
+            }
+            
+            RequestDispatcher rd = request.getRequestDispatcher(FORWARD_PATH);
+            rd.forward(request, response);
+            
         }
     }
 

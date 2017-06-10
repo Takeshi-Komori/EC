@@ -1,9 +1,8 @@
 <%-- 
-    Document   : top
-    Created on : 2017/05/27, 16:35:17
-    Author     : nanameue
+    Document   : add_complete.jsp
+    Created on : 2017/06/10, 16:33:58
+    Author     : komoritakeshi
 --%>
-
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="javax.servlet.http.HttpSession" %>
@@ -42,32 +41,18 @@
                 <li><a href="Logout">ログアウト</a></li>
                     <% } else { %>
                 <li><a href="login.jsp">ログイン</a></li>
-                    <% } %>
+                    <% }%>
             </ul>
         </div>
     </nav>
-    <% if (request.getAttribute("success") != null) {%>
-    <div style="margin-top: 104px; padding-left: 15px;  width: 800px;" class="alert alert-success">ログインに成功しました</div>
-    <!--        <div class="container">
-                <form style="margin-top: 20px;" action="Search" method="get"> 
-                    <input type="text" name="search">
-                    <input type="submit" value="送信">
-                </form>
-            </div>-->
-    <% } else if(request.getAttribute("Logout_success") != null) { %>
-    <div style="margin-top: 104px; padding-left: 15px;  width: 800px;" class="alert alert-info">ログアウトしました</div>
-    
-    
-
-    <%} else {%>
-    <!--        <div class="container">
-                <form style="margin-top: 104px;" action="Search" method="get"> 
-                    <input type="text" name="search">
-                    <input type="submit" value="送信">
-                </form>
-            </div>-->
-    <% }%>
-    <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-</body>
+            
+            
+        <h1>まだ！！！！！！！!</h1>
+        
+        
+        
+        
+ <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>       
+    </body>
 </html>

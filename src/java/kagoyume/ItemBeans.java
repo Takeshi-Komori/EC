@@ -16,7 +16,7 @@ public class ItemBeans {
     private String description;
     private String image;
     private String price;
-    private String merchantID;
+    private String itemID;
     private String reviewAverage;
     
     public String getName() {
@@ -51,12 +51,12 @@ public class ItemBeans {
         this.price = price;
     }
     
-    public String getMerchantID() {
-        return this.merchantID;
+    public String getItemID() {
+        return this.itemID;
     }
     
-    public void setMerchantID(String merchantID) {
-        this.merchantID = merchantID;
+    public void setItemID(String itemID) {
+        this.itemID = itemID;
     }
     
     public String getReviewAverage() {

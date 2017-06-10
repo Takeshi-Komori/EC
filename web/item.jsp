@@ -14,7 +14,7 @@
 
     ItemBeans selectIB = null;
     for (int i = 0; i < getInfos.size(); i++) {
-        if (request.getParameter("id").equals(getInfos.get(i).getMerchantID())) {
+        if (request.getParameter("id").equals(getInfos.get(i).getItemID())) {
             selectIB = getInfos.get(i);
         }
     }
@@ -89,7 +89,10 @@
                     </div>
                     <div class="modal-footer">
                         <form action="Add" method="post">
-                            <input type="hidden" name="buyItem" value="<%= selectIB.getMerchantID() %>">
+                            <input type="hidden" name="itemID" value="<%= selectIB.getItemID() %>">
+                            <input type="hidden" name="itemName" value="<%= selectIB.getName() %>">
+                            <input type="hidden" name="itemImage" value="<%= selectIB.getImage() %>">
+                            <input type="hidden" name="itemPrice" value="<%= selectIB.getPrice() %>">
                             <input type="submit" value="カートに追加" class="btn btn-success">
                         </form>
                     </div>
