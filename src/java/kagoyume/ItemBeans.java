@@ -80,6 +80,7 @@ public class ItemBeans {
         ido.setUserID(userID);
         ido.setItemCode(this.itemID);
         ido.setDeliveryType(this.deliveryType);
+        ido.setImage(this.image);
     }
     
 }

@@ -7,6 +7,7 @@ package kagoyume;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -42,21 +43,24 @@ public class BuyComplete extends HttpServlet {
             ArrayList<ItemBeans> ibArray = (ArrayList<ItemBeans>)hs.getAttribute("ItemBeansBox");
             UserDataBeans loginUserBeans = (UserDataBeans)hs.getAttribute("LOGIN_USER");
             
+            Integer totalPrice = 0;
+            Integer user_id = loginUserBeans.getUserID();
+            
             for (int i = 0; i < ibArray.size(); i++) {
-                
-                System.out.print("----------------deliveryType-------------------");
-                System.out.print(request.getParameter("deliveryType"));
-                System.out.print("----------------deliveryType-------------------");
-                
+                totalPrice += Integer.parseInt(ibArray.get(i).getPrice());
                 ibArray.get(i).setDeliveryType(Integer.parseInt(request.getParameter("deliveryType")));
-                ibArray.get(i).ID2DTOMapping(idt, loginUserBeans.getUserID());
+                ibArray.get(i).ID2DTOMapping(idt, user_id);
                 ItemDataDAO.getInstance().insert(idt);
             }
             
+            UserDataDAO.getInstance().updateTotalPrice(totalPrice, user_id);
             hs.removeAttribute("ItemBeansBox");
             
             RequestDispatcher rd = request.getRequestDispatcher(FORWARD_PATH);
             rd.forward(request, response);
+            
+        } catch (SQLException e) {
+            System.out.print(e.getMessage());
         }
     }
 

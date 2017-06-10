@@ -87,4 +87,28 @@ public class UserDataDAO {
             }
         }
     }
+        
+        public void updateTotalPrice(Integer totalPrice, Integer user_id) throws SQLException {
+        Connection con = null;
+        PreparedStatement st = null;
+        try {
+            con = DBManager.getConnection();
+            st = con.prepareStatement("UPDATE user_t set total = ? where user_id = ?");
+
+            st.setInt(1, totalPrice);
+            st.setInt(2, user_id);
+
+            st.executeUpdate();
+            System.out.println("insert completed");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            throw new SQLException(e);
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+        
+        }
+        
 }

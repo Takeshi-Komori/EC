@@ -25,11 +25,12 @@ public class ItemDataDAO {
         PreparedStatement st = null;
         try{
             con = DBManager.getConnection();
-            st =  con.prepareStatement("INSERT INTO buy_t(user_id,item_code,type,buy_date) VALUES(?,?,?,?)");
+            st =  con.prepareStatement("INSERT INTO buy_t(user_id,item_code,image,type,buy_date) VALUES(?,?,?,?,?)");
             st.setInt(1, idt.getUserID());
             st.setString(2, idt.getItemCode());
-            st.setInt(3, idt.getDeliveryType());
-            st.setTimestamp(4, new Timestamp(System.currentTimeMillis()));
+            st.setString(3, idt.getImage());
+            st.setInt(4, idt.getDeliveryType());
+            st.setTimestamp(5, new Timestamp(System.currentTimeMillis()));
             st.executeUpdate();
             System.out.println("insert completed");
         }catch(SQLException e){

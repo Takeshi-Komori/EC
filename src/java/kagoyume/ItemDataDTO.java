@@ -13,6 +13,7 @@ public class ItemDataDTO {
     private String itemCode;
     private Integer deliveryType;
     private Integer userID;
+    private String image;
     
     public void setItemCode(String itemCode) {
         this.itemCode = itemCode;
@@ -36,6 +37,14 @@ public class ItemDataDTO {
     
     public Integer getUserID() {
         return this.userID;
+    }
+    
+    public String getImage() {
+        return this.image;
+    }
+    
+    public void setImage(String image) {
+        this.image = image;
     }
     
 }
