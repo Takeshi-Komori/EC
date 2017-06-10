@@ -43,7 +43,6 @@ public class LoginJudge extends HttpServlet {
             String pass = request.getParameter("password");
 
             UserDataBeans udb = new UserDataBeans();
-
             UserDataDAO.getInstance().select(email, pass, udb);
 
             if (udb.getName() == null || udb.getEmail() == null) {

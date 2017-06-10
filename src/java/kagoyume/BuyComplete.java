@@ -43,7 +43,12 @@ public class BuyComplete extends HttpServlet {
             ArrayList<ItemBeans> ibArray = (ArrayList<ItemBeans>)hs.getAttribute("ItemBeansBox");
             UserDataBeans loginUserBeans = (UserDataBeans)hs.getAttribute("LOGIN_USER");
             
-            Integer totalPrice = 0;
+            Integer totalPrice = loginUserBeans.getTotalPrice();
+            
+            System.out.print("-----------1番目-------------");
+            System.out.print(totalPrice);
+            System.out.print("------------------------");
+            
             Integer user_id = loginUserBeans.getUserID();
             
             for (int i = 0; i < ibArray.size(); i++) {
@@ -52,6 +57,10 @@ public class BuyComplete extends HttpServlet {
                 ibArray.get(i).ID2DTOMapping(idt, user_id);
                 ItemDataDAO.getInstance().insert(idt);
             }
+            
+            System.out.print("-------------2番目-----------");
+            System.out.print(totalPrice);
+            System.out.print("------------------------");
             
             UserDataDAO.getInstance().updateTotalPrice(totalPrice, user_id);
             hs.removeAttribute("ItemBeansBox");

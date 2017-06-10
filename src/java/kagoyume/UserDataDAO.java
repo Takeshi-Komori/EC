@@ -64,15 +64,15 @@ public class UserDataDAO {
 
             while (rs.next()) {
                 udb.setUserID(rs.getInt("user_id"));
-                
-                System.out.print("---------------");
-                System.out.print(udb.getUserID());
-                System.out.print("---------------");
-                
                 udb.setName(rs.getString("name"));
                 udb.setAddress(rs.getString("address"));
                 udb.setPassword(rs.getString("password"));
                 udb.setEmail(rs.getString("mail"));
+                if (rs.getInt("total") == 0) {
+                    udb.setTotalPrice(0);
+                }else if (rs.getInt("total") > 0){
+                    udb.setTotalPrice(rs.getInt("total"));
+                }
             }
 
           
