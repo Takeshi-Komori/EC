@@ -48,17 +48,18 @@
             </div>
 
             <h3 style="margin-top: 36px; text-align: center; margin-bottom: 36px;">小森様の購入履歴</h3>
-            <div class="panel panel-default" style="width: 800px; margin-left: auto; margin-right: auto;">
-                <!--<div class="panel-body">-->
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <p>購入日 : 12月3日</p>
-                        </li>
-                        <li class="list-group-item">...</li>
-                        <li class="list-group-item">...</li>
-                    </ul>
-                <!--</div>-->
-            </div>
+            <table class="table" style="width: 800px; margin: 0 auto 0 auto;">
+                <thead>
+                    <tr><th>購入日</th><th>商品</th><th>値段</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>1月1日</td><td><p style="float: left;">からあげクン</p><img style="width: 146px; height: 146px; margin-left: 100px; float: left;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTORpJ71yfBlnRDFSMNlE4EjV8v4xuOQnVtS-V4GaDfRQFl9eOR"></td><td>1000円</td></tr>
+                    <tr><td>1月1日</td><td><p style="float: left;">からあげクン</p><img style="width: 146px; height: 146px; margin-left: 100px; float: left;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTORpJ71yfBlnRDFSMNlE4EjV8v4xuOQnVtS-V4GaDfRQFl9eOR"></td><td>1000円</td></tr>
+                    <tr><td>1月1日</td><td><p style="float: left;">からあげクン</p><img style="width: 146px; height: 146px; margin-left: 100px; float: left;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTORpJ71yfBlnRDFSMNlE4EjV8v4xuOQnVtS-V4GaDfRQFl9eOR"></td><td>1000円</td></tr>
+                    <tr><td>1月1日</td><td><p style="float: left;">からあげクン</p><img style="width: 146px; height: 146px; margin-left: 100px; float: left;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTORpJ71yfBlnRDFSMNlE4EjV8v4xuOQnVtS-V4GaDfRQFl9eOR"></td><td>1000円</td></tr>
+                    <tr><td>1月1日</td><td><p style="float: left;">からあげクン</p><img style="width: 146px; height: 146px; margin-left: 100px; float: left;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTORpJ71yfBlnRDFSMNlE4EjV8v4xuOQnVtS-V4GaDfRQFl9eOR"></td><td>1000円</td></tr>
+                </tbody>
+            </table>
         </div>
 
 
