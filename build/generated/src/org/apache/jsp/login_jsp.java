@@ -5,7 +5,7 @@ import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 import javax.servlet.http.HttpSession;
 
-public final class top_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -42,7 +42,6 @@ public final class top_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
@@ -93,38 +92,52 @@ public final class top_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            </ul>\n");
       out.write("        </div>\n");
       out.write("    </nav>\n");
-      out.write("    ");
- if (request.getAttribute("success") != null) {
       out.write("\n");
-      out.write("    <div style=\"margin-top: 104px; padding-left: 15px;  width: 800px;\" class=\"alert alert-success\">ログインに成功しました</div>\n");
-      out.write("    <!--        <div class=\"container\">\n");
-      out.write("                <form style=\"margin-top: 20px;\" action=\"Search\" method=\"get\"> \n");
-      out.write("                    <input type=\"text\" name=\"search\">\n");
-      out.write("                    <input type=\"submit\" value=\"送信\">\n");
-      out.write("                </form>\n");
-      out.write("            </div>-->\n");
-      out.write("    ");
- } else if(request.getAttribute("Logout_success") != null) { 
+      out.write("    <div class=\"container\">\n");
+      out.write("        ");
+ if (request.getAttribute("fail") != null) {
       out.write("\n");
-      out.write("    <div style=\"margin-top: 104px; padding-left: 15px;  width: 800px;\" class=\"alert alert-info\">ログアウトしました</div>\n");
-      out.write("    \n");
-      out.write("    \n");
-      out.write("\n");
-      out.write("    ");
+      out.write("        <div style=\"margin-top: 104px; width: 800px;\" class=\"alert alert-danger\">ログインに失敗しました</div>\n");
+      out.write("        <p style=\"margin-top: 12px; text-align: center;\"><strong>ログイン</strong></p>\n");
+      out.write("        <form action=\"LoginJudge\" style=\"margin: 12px auto 0 auto; width: 600px;\" method=\"post\">\n");
+      out.write("            <div class=\"form-group\">\n");
+      out.write("                <label class=\"control-label\" for=\"email\">Email</label>\n");
+      out.write("                <input type=\"text\" id=\"email\" name=\"email\" class=\"form-control\" placeholder=\"email\">\n");
+      out.write("            </div>\n");
+      out.write("            <div class=\"form-group\">\n");
+      out.write("                <label class=\"control-label\" for=\"password\">Password</label>\n");
+      out.write("                <input type=\"password\" id=\"password\" name=\"password\" class=\"form-control\">\n");
+      out.write("            </div>\n");
+      out.write("            <div class=\"form-group\">\n");
+      out.write("                <input type=\"submit\" value=\"ログイン\" class=\"btn btn-primary\">\n");
+      out.write("            </div>\n");
+      out.write("        </form>\n");
+      out.write("        ");
 } else {
       out.write("\n");
-      out.write("    <!--        <div class=\"container\">\n");
-      out.write("                <form style=\"margin-top: 104px;\" action=\"Search\" method=\"get\"> \n");
-      out.write("                    <input type=\"text\" name=\"search\">\n");
-      out.write("                    <input type=\"submit\" value=\"送信\">\n");
-      out.write("                </form>\n");
-      out.write("            </div>-->\n");
-      out.write("    ");
+      out.write("        <p style=\"margin-top: 104px; text-align: center;\"><strong>ログイン</strong></p>\n");
+      out.write("        <form action=\"LoginJudge\" style=\"margin: 12px auto 0 auto; width: 600px;\" method=\"post\">\n");
+      out.write("            <div class=\"form-group\">\n");
+      out.write("                <label class=\"control-label\" for=\"email\">Email</label>\n");
+      out.write("                <input type=\"text\" id=\"email\" name=\"email\" class=\"form-control\" placeholder=\"email\">\n");
+      out.write("            </div>\n");
+      out.write("            <div class=\"form-group\">\n");
+      out.write("                <label class=\"control-label\" for=\"password\">Password</label>\n");
+      out.write("                <input type=\"password\" id=\"password\" name=\"password\" class=\"form-control\">\n");
+      out.write("            </div>\n");
+      out.write("            <div class=\"form-group\">\n");
+      out.write("                <input type=\"submit\" value=\"ログイン\" class=\"btn btn-primary\">\n");
+      out.write("            </div>\n");
+      out.write("        </form>\n");
+      out.write("        ");
  }
       out.write("\n");
-      out.write("    <script src=\"http://code.jquery.com/jquery.js\"></script>\n");
-      out.write("    <script src=\"bootstrap/js/bootstrap.min.js\"></script>\n");
+      out.write("        <a href=\"resistration.jsp\">新規登録</a>\n");
+      out.write("\n");
+      out.write("        <script src=\"http://code.jquery.com/jquery.js\"></script>\n");
+      out.write("        <script src=\"bootstrap/js/bootstrap.min.js\"></script>\n");
       out.write("</body>\n");
+      out.write("\n");
       out.write("</html>\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){

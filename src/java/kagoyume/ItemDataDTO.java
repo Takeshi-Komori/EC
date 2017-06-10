@@ -10,5 +10,32 @@ package kagoyume;
  * @author komoritakeshi
  */
 public class ItemDataDTO {
+    private String itemCode;
+    private Integer deliveryType;
+    private Integer userID;
+    
+    public void setItemCode(String itemCode) {
+        this.itemCode = itemCode;
+    }
+    
+    public String getItemCode() {
+        return this.itemCode;
+    }
+    
+    public void setDeliveryType(Integer deliveryType) {
+        this.deliveryType = deliveryType;
+    }
+    
+    public Integer getDeliveryType() {
+        return this.deliveryType;
+    }
+    
+    public void setUserID(Integer userID) {
+        this.userID = userID;
+    }
+    
+    public Integer getUserID() {
+        return this.userID;
+    }
     
 }

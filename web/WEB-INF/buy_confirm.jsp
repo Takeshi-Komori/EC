@@ -60,26 +60,36 @@
                     </thead>
                     <tbody>
                     <form action="BuyComplete" method="post">
-                        <% for (int i = 0; i < itemBeansBox.size(); i++) {%>
-                        <tr style="background-color: white;"><td><%= itemBeansBox.get(i).getName()%></td><td><img src=<%= itemBeansBox.get(i).getImage()%>></td><td><%= itemBeansBox.get(i).getPrice()%>円</td><td><a href="" class="btn btn-danger">削除</a></td></tr>          
+                        <% Integer totalPrice = 0;
+                            for (int i = 0; i < itemBeansBox.size(); i++) {
+                                totalPrice += Integer.parseInt(itemBeansBox.get(i).getPrice());
+                        %>
+                        <tr style="background-color: white;"><td><%= itemBeansBox.get(i).getName()%></td><td><img src=<%= itemBeansBox.get(i).getImage()%>></td><td style="width: 100px; font-size: 18px;"><%= itemBeansBox.get(i).getPrice()%>円</td><td><a href="" class="btn btn-danger">削除</a></td></tr>          
                                 <% }%>
+                        
                         <tr><td><strong>配送先</strong></td><td></tr>
                         <tr style="background-color: white;"><td><%= udb.getAddress()%></td></tr>
                         <tr><td><strong>配送オプション</strong></td></tr>
                         <tr style="background-color: white;">
                             <td>
                                 <div class="form-inline">
-                                    <label class="radio-inline"><input type="radio" name="deliveryWay" value="1">配送A</label>
-                                    <label class="radio-inline"><input type="radio" name="deliveryWay" value="1">配送B</label>
-                                    <label class="radio-inline"><input type="radio" name="deliveryWay" value="1">配送C</label>
+                                    <label class="radio-inline"><input type="radio" name="deliveryType" value="1">配送A</label>
+                                    <label class="radio-inline"><input type="radio" name="deliveryType" value="2">配送B</label>
+                                    <label class="radio-inline"><input type="radio" name="deliveryType" value="3">配送C</label>
                                 </div>
                             </td></tr>
+                        
+                        
+                        
 
-                    </tbody>
+                        </tbody>
                 </table>
+                <hr style="width: 800px; margin: 50px auto 25px 0;">
+                <h3 style="float: left; margin-top: 0;">合計</h3><h3 style="float: left; margin-left: 25px; margin-top: 0;"><%= totalPrice %>円</h3>
+                <input type="submit" style="float: right; margin-bottom: 100px;" value="購入する" class="btn btn-primary">
+                </form>
             </div>
-                        <input type="submit" value="購入する" class="btn btn-primary">
-                 </form>
+
         </div>
     </div>
 

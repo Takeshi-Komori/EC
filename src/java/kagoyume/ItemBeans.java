@@ -18,6 +18,7 @@ public class ItemBeans {
     private String price;
     private String itemID;
     private String reviewAverage;
+    private Integer deliveryType;
     
     public String getName() {
         return this.name;
@@ -65,6 +66,20 @@ public class ItemBeans {
     
     public void setReviewAverage(String reviewAverage) {
         this.reviewAverage = reviewAverage;
+    }
+    
+    public void setDeliveryType(Integer deliveryType) {
+        this.deliveryType = deliveryType;
+    }
+    
+    public Integer getDeliveryType() {
+        return this.deliveryType;
+    }
+    
+    public void ID2DTOMapping(ItemDataDTO ido, Integer userID) {
+        ido.setUserID(userID);
+        ido.setItemCode(this.itemID);
+        ido.setDeliveryType(this.deliveryType);
     }
     
 }

@@ -7,10 +7,12 @@ package kagoyume;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -31,7 +33,19 @@ public class BuyComplete extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
- 
+            request.setCharacterEncoding("UTF-8");
+            HttpSession hs = request.getSession();
+            ItemDataDTO idt = new ItemDataDTO();
+            ArrayList<ItemBeans> ibArray = (ArrayList<ItemBeans>)hs.getAttribute("ItemBeansBox");
+            UserDataBeans loginUserBeans = (UserDataBeans)hs.getAttribute("LOGIN_USER");
+            
+            for (int i = 0; i < ibArray.size(); i++) {
+                ibArray.get(i).setDeliveryType(Integer.parseInt(request.getParameter("deliveryType")));
+                ibArray.get(i).ID2DTOMapping(idt, loginUserBeans.getUserID());
+                ItemDataDAO.getInstance().insert(idt);
+            }
+            
+            hs.removeAttribute("ItemBeansBox");
         }
     }
 
