@@ -8,6 +8,7 @@ package kagoyume;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,6 +34,8 @@ public class BuyComplete extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            
+            final String FORWARD_PATH = "WEB-INF/buy_complete.jsp";
             request.setCharacterEncoding("UTF-8");
             HttpSession hs = request.getSession();
             ItemDataDTO idt = new ItemDataDTO();
@@ -40,12 +43,20 @@ public class BuyComplete extends HttpServlet {
             UserDataBeans loginUserBeans = (UserDataBeans)hs.getAttribute("LOGIN_USER");
             
             for (int i = 0; i < ibArray.size(); i++) {
+                
+                System.out.print("----------------deliveryType-------------------");
+                System.out.print(request.getParameter("deliveryType"));
+                System.out.print("----------------deliveryType-------------------");
+                
                 ibArray.get(i).setDeliveryType(Integer.parseInt(request.getParameter("deliveryType")));
                 ibArray.get(i).ID2DTOMapping(idt, loginUserBeans.getUserID());
                 ItemDataDAO.getInstance().insert(idt);
             }
             
             hs.removeAttribute("ItemBeansBox");
+            
+            RequestDispatcher rd = request.getRequestDispatcher(FORWARD_PATH);
+            rd.forward(request, response);
         }
     }
 
