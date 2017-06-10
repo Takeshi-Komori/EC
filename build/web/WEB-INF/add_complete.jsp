@@ -45,14 +45,14 @@
             </ul>
         </div>
     </nav>
-            
-            
-        <h1>まだ！！！！！！！!</h1>
-        
-        
-        
-        
- <script src="http://code.jquery.com/jquery.js"></script>
+
+
+    <h1>商品追加したっす！！！！！</h1>
+
+
+
+
+    <script src="http://code.jquery.com/jquery.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>       
-    </body>
+</body>
 </html>

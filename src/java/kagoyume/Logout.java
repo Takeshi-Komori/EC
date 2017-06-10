@@ -37,6 +37,7 @@ public class Logout extends HttpServlet {
             
             HttpSession hs = request.getSession();
             hs.removeAttribute("LOGIN_USER");
+            hs.removeAttribute("ItemBeansBox");
             request.setAttribute("Logout_success","Logout_success");
             
             RequestDispatcher rd = request.getRequestDispatcher(FORWARD_PATH);

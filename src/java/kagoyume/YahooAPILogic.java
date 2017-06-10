@@ -70,7 +70,6 @@ public class YahooAPILogic {
             itemBeans.setPrice(((Map<String, Object>) result.get("PriceLabel")).get("DefaultPrice").toString());
             itemBeans.setImage(((Map<String, Object>) result.get("Image")).get("Medium").toString());
             itemBeans.setReviewAverage(((Map<String, Object>) result.get("Review")).get("Rate").toString());
-            
             itemBeans.setItemID(createMerchantID());
 
             ibArray.add(itemBeans);

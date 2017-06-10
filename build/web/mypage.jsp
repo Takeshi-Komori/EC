@@ -6,9 +6,11 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="javax.servlet.http.HttpSession" %>
+<%@page import="kagoyume.UserDataBeans" %>
 
 <%
     HttpSession hs = request.getSession();
+    UserDataBeans udb = (UserDataBeans)hs.getAttribute("LOGIN_USER");
 
 %>
 <!DOCTYPE html>
@@ -47,7 +49,7 @@
     </nav>
 
         <div class="container">
-            <h3 style="margin-top: 104px; text-align: center; margin-bottom: 36px;">小森様の登録情報</h3>
+            <h3 style="margin-top: 104px; text-align: center; margin-bottom: 36px;"><%= udb.getName() %>様の登録情報</h3>
             <div class="informations" style="background-color: #f0f0f0; width: 800px; margin-left: auto; margin-right: auto;">
                 <div class="table-contents" style="width: 600px; margin-left: auto; margin-right: auto; padding-top: 12px; padding-bottom: 12px;">
                     <table class="table" style="margin-top: 24px;">
@@ -55,17 +57,17 @@
                             <tr><th>会員登録情報</th></tr>
                         </thead>
                         <tbody>
-                            <tr><td>基本情報</td><td>小森武史 22歳 男</td><td><a href="" class="btn btn-info">変更</a></td></tr>
-                            <tr><td>メールアドレス</td><td>stubgurssy@gmail.com</td><td><a href="" class="btn btn-info">変更</a></td></tr>
-                            <tr><td>住所</td><td>東京都杉並区宮前</td><td><a href="" class="btn btn-info">変更</a></td></tr>
-                            <tr><td>password</td><td>*******</td><td><a href="" class="btn btn-info">変更</a></td></tr>
+                            <tr><td>名前</td><td><%= udb.getName() %></td><td><a href="" class="btn btn-info">変更</a></td></tr>
+                            <tr><td>メールアドレス</td><td><%= udb.getEmail() %></td><td><a href="" class="btn btn-info">変更</a></td></tr>
+                            <tr><td>住所</td><td><%= udb.getAddress() %></td><td><a href="" class="btn btn-info">変更</a></td></tr>
+                            <tr><td>password</td><td><% for(int i =0; i < udb.getPassword().length(); i++){out.print("*");} %></td><td><a href="" class="btn btn-info">変更</a></td></tr>
                         </tbody>
                     </table>
                 </div>
                 <a href="" class="btn btn-danger" style="float: right; margin-top: 10px;">削除</a>
             </div>
 
-            <h3 style="margin-top: 100px; text-align: center; margin-bottom: 36px;">小森様の購入履歴</h3>
+            <h3 style="margin-top: 100px; text-align: center; margin-bottom: 36px;"><%= udb.getName() %>様の購入履歴</h3>
             <table class="table" style="width: 800px; margin: 0 auto 0 auto;">
                 <thead>
                     <tr><th>購入日</th><th>商品</th><th>値段</th></tr>

@@ -70,7 +70,14 @@
         </table>
 
 
-            <a data-toggle="modal" style="width: 150px; display: block; float: right;" href="#confirm" class="btn btn-primary">カート追加へ</a>
+        <% if (hs.getAttribute("LOGIN_USER") != null) { %>
+        <a data-toggle="modal" style="width: 150px; display: block; float: right;" href="#confirm" class="btn btn-primary">カート追加へ</a>
+        <% } else { %>
+        <a class="btn btn-primary" style="width: 300px; display: block; float: right; margin-right: 50px;" href="login.jsp">ログインするとカートに追加できます</a>
+        <% }%>
+
+
+        
 
         <div class="modal fade" id="confirm"> 
             <div class="modal-dialog">
@@ -88,11 +95,11 @@
                         </table>
                     </div>
                     <div class="modal-footer">
-                        <form action="Add" method="post">
-                            <input type="hidden" name="itemID" value="<%= selectIB.getItemID() %>">
-                            <input type="hidden" name="itemName" value="<%= selectIB.getName() %>">
-                            <input type="hidden" name="itemImage" value="<%= selectIB.getImage() %>">
-                            <input type="hidden" name="itemPrice" value="<%= selectIB.getPrice() %>">
+                        <form action="ItemAdd" method="post">
+                            <input type="hidden" name="itemID" value="<%= selectIB.getItemID()%>">
+                            <input type="hidden" name="itemName" value="<%= selectIB.getName()%>">
+                            <input type="hidden" name="itemImage" value="<%= selectIB.getImage()%>">
+                            <input type="hidden" name="itemPrice" value="<%= selectIB.getPrice()%>">
                             <input type="submit" value="カートに追加" class="btn btn-success">
                         </form>
                     </div>

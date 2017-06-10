@@ -58,7 +58,7 @@
             </thead>
             <tbody>
                 <% for (int i = 0; i < getInfos.size(); i++) {%>
-                <tr><td><a href="item.jsp?id=<%= getInfos.get(i).getMerchantID()%>"><%= getInfos.get(i).getName()%></a></td><td><img src=<%= getInfos.get(i).getImage()%> ></td><td><%= getInfos.get(i).getDescription()%></td><td><%= getInfos.get(i).getPrice()%></td></tr>
+                <tr><td><a href="item.jsp?id=<%= getInfos.get(i).getItemID()%>"><%= getInfos.get(i).getName()%></a></td><td><img src=<%= getInfos.get(i).getImage()%> ></td><td><%= getInfos.get(i).getDescription()%></td><td><%= getInfos.get(i).getPrice()%>円</td></tr>
                         <% }%>
             </tbody>
         </table> 

@@ -46,8 +46,6 @@ public final class top_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
- request.setCharacterEncoding("UTF-8"); 
-      out.write("\n");
       out.write("\n");
       out.write("\n");
 
