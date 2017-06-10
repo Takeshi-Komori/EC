@@ -5,9 +5,11 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="kagoyume.UserDataDTO" %>
+<%@page import="javax.servlet.http.HttpSession" %>
+<%@page import="kagoyume.UserDataBeans" %>
 <%
-   UserDataDTO ud = (UserDataDTO)request.getAttribute("USER_INFO"); 
+    HttpSession hs = request.getSession();
+    UserDataBeans udb = (UserDataBeans) hs.getAttribute("UserDataBeans");
 %>
 
 <!DOCTYPE html>
@@ -35,10 +37,10 @@
    </nav>
       <div class="container">
         <h1>以上の内容で登録しました！</h1>
-        <h2><%= ud.getName() %></h2>
-        <h2><%= ud.getEmail() %></h2>
-        <h2><%= ud.getAddress() %></h2>
-        <h2><%= ud.getPassword() %></h2>
+        <h2><%= udb.getName() %></h2>
+        <h2><%= udb.getEmail() %></h2>
+        <h2><%= udb.getAddress() %></h2>
+        <h2><%= udb.getPassword() %></h2>
       </div>
         
         

@@ -35,18 +35,18 @@
 
         <div class="container">
             <p style="margin-top: 104px; text-align: center;"><strong>新規登録</strong></p>
-            <form action="Resistration" style="margin: 12px auto 0 auto; width: 600px;">
+            <form action="Resistration" style="margin: 12px auto 0 auto; width: 600px;" method="post">
                 <div class="form-group">
                     <label class="control-label" for="username">Name</label>
-                    <input type="text" id="name" name="name" class="form-control" placeholder="email">
+                    <input type="text" id="name" name="name" class="form-control" placeholder="マツモトキヨシ">
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="email">Email</label>
-                    <input type="text" id="email" name="email" class="form-control" placeholder="email">
+                    <input type="text" id="email" name="email" class="form-control" placeholder="kyoshi@kiyoshi.com">
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="address">Address</label>
-                    <input type="text" id="email" name="address" class="form-control" placeholder="address">
+                    <input type="text" id="email" name="address" class="form-control" placeholder="松キヨシ一丁目">
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="password">Password</label>
@@ -57,7 +57,6 @@
                     <input type="password" id="password_confirm" name="password_confirm" class="form-control">
                 </div>
                 <div class="form-group">
-                    <input type="hidden" name="ACCESS_NUMBER" value="<%= hs.getAttribute("ACCESS_NUMBER")%>">
                     <input type="submit" value="新規登録" class="btn btn-primary">
                 </div>
             </form>

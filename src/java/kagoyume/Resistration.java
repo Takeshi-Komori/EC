@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author komoritakeshi
  */
-public class AccessChecker extends HttpServlet {
+public class Resistration extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,10 +32,23 @@ public class AccessChecker extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
+        request.setCharacterEncoding("UTF-8");
+        HttpSession hs = request.getSession();
+        UserDataBeans udb = new UserDataBeans();
+
         try (PrintWriter out = response.getWriter()) {
-            HttpSession hs = request.getSession();
             hs.setAttribute("ACCESS_NUMBER", (int)Math.random() * 1000);
-            RequestDispatcher rd = request.getRequestDispatcher("resistration.jsp");
+
+            udb.setName(request.getParameter("name"));
+            udb.setEmail(request.getParameter("email"));
+            udb.setAddress(request.getParameter("address"));
+            udb.setPassword(request.getParameter("password"));
+
+            hs.setAttribute("UserDataBeans", udb);
+
+            RequestDispatcher rd = request.getRequestDispatcher("resistration_confirm.jsp");
+            rd.forward(request, response);
         }
     }
 

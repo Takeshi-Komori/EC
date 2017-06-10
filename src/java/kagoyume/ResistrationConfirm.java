@@ -35,7 +35,7 @@ public class ResistrationConfirm extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        final String FORWARD_PATH = "WEB-INF/resistration_complete.jsp";
+        final String FORWARD_PATH = "/WEB-INF/resistration_complete.jsp";
         HttpSession hs = request.getSession();
 
         UserDataDTO ud = new UserDataDTO();
@@ -44,16 +44,18 @@ public class ResistrationConfirm extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             if (hs.getAttribute("ACCESS_NUMBER") == null
-                    || (int) hs.getAttribute("ACCESS_NUMBER") == Integer.parseInt(request.getParameter("ACCESS_NUMBER"))) {
+                    || (int) hs.getAttribute("ACCESS_NUMBER") != Integer.parseInt(request.getParameter("ACCESS_NUMBER"))) {
                 out.print("不正なアクセスです");
+
+            } else {
+
+                udb.UD2DTOMapping(ud);
+                UserDataDAO.getInstance().insert(ud);
+
+                RequestDispatcher rd = request.getRequestDispatcher(FORWARD_PATH);
+                rd.forward(request, response);
+
             }
-
-            udb.UD2DTOMapping(ud);
-            UserDataDAO.getInstance().insert(ud);
-
-            RequestDispatcher rd = request.getRequestDispatcher(FORWARD_PATH);
-            rd.forward(request, response);
-
         } catch (SQLException e) {
             System.out.print(e.getMessage());
         } catch (Exception e) {

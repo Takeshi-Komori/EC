@@ -5,7 +5,7 @@ import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 import javax.servlet.http.HttpSession;
 
-public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class resistration_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -46,6 +46,10 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
+
+    HttpSession hs = request.getSession();
+
+      out.write("\n");
       out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html lang=\"ja\">\n");
@@ -61,7 +65,8 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <a class=\"navbar-brand\" href=\"\">小森の店</a>\n");
       out.write("            </div>\n");
       out.write("            <div class=\"btn-group navbar-right\" style=\"margin-top: 13px; margin-bottom: 13px;\">\n");
-      out.write("                <button style=\"margin: 8px 48px 8px 0;\" class=\"btn btn-info dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"glyphicon glyphicon-user\"></i> Info</button>\n");
+      out.write("                <button style=\"margin: 8px 48px 8px 0;\" class=\"btn btn-info dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"glyphicon glyphicon-user\"></i> Info\n");
+      out.write("                </button>\n");
       out.write("                <ul class=\"dropdown-menu\">\n");
       out.write("                    <li><a href=\"\">買い物かごの中</a></li>\n");
       out.write("                    <li><a href=\"\">ログアウト</a></li>\n");
@@ -70,50 +75,42 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        </nav>\n");
       out.write("\n");
       out.write("        <div class=\"container\">\n");
-      out.write("            ");
- if (request.getAttribute("fail") != null) {
-      out.write("\n");
-      out.write("            <div style=\"margin-top: 104px; width: 800px;\" class=\"alert alert-danger\">ログインに失敗しました</div>\n");
-      out.write("            <p style=\"margin-top: 12px; text-align: center;\"><strong>ログイン</strong></p>\n");
-      out.write("            <form action=\"LoginJudge\" style=\"margin: 12px auto 0 auto; width: 600px;\" method=\"post\">\n");
+      out.write("            <p style=\"margin-top: 104px; text-align: center;\"><strong>新規登録</strong></p>\n");
+      out.write("            <form action=\"Resistration\" style=\"margin: 12px auto 0 auto; width: 600px;\" method=\"post\">\n");
+      out.write("                <div class=\"form-group\">\n");
+      out.write("                    <label class=\"control-label\" for=\"username\">Name</label>\n");
+      out.write("                    <input type=\"text\" id=\"name\" name=\"name\" class=\"form-control\" placeholder=\"マツモトキヨシ\">\n");
+      out.write("                </div>\n");
       out.write("                <div class=\"form-group\">\n");
       out.write("                    <label class=\"control-label\" for=\"email\">Email</label>\n");
-      out.write("                    <input type=\"text\" id=\"email\" name=\"email\" class=\"form-control\" placeholder=\"email\">\n");
+      out.write("                    <input type=\"text\" id=\"email\" name=\"email\" class=\"form-control\" placeholder=\"kyoshi@kiyoshi.com\">\n");
+      out.write("                </div>\n");
+      out.write("                <div class=\"form-group\">\n");
+      out.write("                    <label class=\"control-label\" for=\"address\">Address</label>\n");
+      out.write("                    <input type=\"text\" id=\"email\" name=\"address\" class=\"form-control\" placeholder=\"松キヨシ一丁目\">\n");
       out.write("                </div>\n");
       out.write("                <div class=\"form-group\">\n");
       out.write("                    <label class=\"control-label\" for=\"password\">Password</label>\n");
       out.write("                    <input type=\"password\" id=\"password\" name=\"password\" class=\"form-control\">\n");
       out.write("                </div>\n");
       out.write("                <div class=\"form-group\">\n");
-      out.write("                    <input type=\"submit\" value=\"ログイン\" class=\"btn btn-primary\">\n");
+      out.write("                    <label class=\"control-label\" for=\"password_confirm\">password-confirm</label>\n");
+      out.write("                    <input type=\"password\" id=\"password_confirm\" name=\"password_confirm\" class=\"form-control\">\n");
+      out.write("                </div>\n");
+      out.write("                <div class=\"form-group\">\n");
+      out.write("                    <input type=\"submit\" value=\"新規登録\" class=\"btn btn-primary\">\n");
       out.write("                </div>\n");
       out.write("            </form>\n");
-      out.write("            ");
-} else {
       out.write("\n");
-      out.write("            <p style=\"margin-top: 104px; text-align: center;\"><strong>ログイン</strong></p>\n");
-      out.write("            <form action=\"LoginJudge\" style=\"margin: 12px auto 0 auto; width: 600px;\" method=\"post\">\n");
-      out.write("                <div class=\"form-group\">\n");
-      out.write("                    <label class=\"control-label\" for=\"email\">Email</label>\n");
-      out.write("                    <input type=\"text\" id=\"email\" name=\"email\" class=\"form-control\" placeholder=\"email\">\n");
-      out.write("                </div>\n");
-      out.write("                <div class=\"form-group\">\n");
-      out.write("                    <label class=\"control-label\" for=\"password\">Password</label>\n");
-      out.write("                    <input type=\"password\" id=\"password\" name=\"password\" class=\"form-control\">\n");
-      out.write("                </div>\n");
-      out.write("                <div class=\"form-group\">\n");
-      out.write("                    <input type=\"submit\" value=\"ログイン\" class=\"btn btn-primary\">\n");
-      out.write("                </div>\n");
-      out.write("            </form>\n");
-      out.write("            ");
- } 
       out.write("\n");
-      out.write("            <a href=\"AccessChecker\">新規登録</a>\n");
+      out.write("        </div>\n");
       out.write("\n");
-      out.write("            <script src=\"http://code.jquery.com/jquery.js\"></script>\n");
-      out.write("            <script src=\"bootstrap/js/bootstrap.min.js\"></script>\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("        <script src=\"http://code.jquery.com/jquery.js\"></script>\n");
+      out.write("        <script src=\"bootstrap/js/bootstrap.min.js\"></script>\n");
       out.write("    </body>\n");
-      out.write("\n");
       out.write("</html>\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){

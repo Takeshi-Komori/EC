@@ -1,4 +1,4 @@
-<%-- 
+    <%-- 
     Document   : resistration_confirm
     Created on : 2017/05/28, 12:13:15
     Author     : nanameue
