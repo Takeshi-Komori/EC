@@ -25,7 +25,7 @@
     <body>
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="navbar-header">
-                <a class="navbar-brand" href="" style="padding-left: 200px;">小森の店</a>
+                <a class="navbar-brand" href="top.jsp" style="padding-left: 200px;">小森の店</a>
                 <form action="Search" method="get" style=" margin: 21px auto 21px auto; height: 38px; float: right;">
                     <div class="input-group" style="width: 500px;">
                         <input type="text" name="search" class="form-control" placeholder="何かお探しですか？" />
@@ -39,28 +39,31 @@
             <button style="margin: 8px 48px 8px 0;" class="btn btn-info dropdown-toggle" data-toggle="dropdown">Info<span class="caret"></span></button>
             <ul class="dropdown-menu">
                 <% if (hs.getAttribute("LOGIN_USER") != null) { %>
-                <li><a href="">買い物かごの中</a></li>
-                <li><a href="">マイページ</a></li>
-                <li><a href="">ログアウト</a></li>
+                <li><a href="cart.jsp">買い物かごの中</a></li>
+                <li><a href="mypage.jsp">マイページ</a></li>
+                <li><a href="Logout">ログアウト</a></li>
                     <% } else { %>
-                <li><a href="">ログイン</a></li>
+                <li><a href="login.jsp">ログイン</a></li>
                     <% } %>
             </ul>
         </div>
     </nav>
-            
-            
-   <div class="container" style="padding: 20px 0">
-     <h1 style="margin-top: 74px; margin-bottom: 20px; text-align: center;">商品検索結果</h1>
-     <table class="table table-striped" style="margin-top: ">
-       <thead>
-           <tr><th>商品名</th><th>画像</th><th>商品概要</th><th>金額</th></tr>
-       </thead>
-       <tbody>
-          <% for (int i = 0; i < getInfos.size(); i++) { %>
-          <tr><td><a href="item.jsp?id=<%= getInfos.get(i).getMerchantID() %>"><%= getInfos.get(i).getName() %></a></td><td><img src=<%= getInfos.get(i).getImage() %> ></td><td><%= getInfos.get(i).getDescription() %></td><td><%= getInfos.get(i).getPrice() %></td></tr>
-          <% } %>
-       </tbody>
-     </table> 
-    </body>
+
+
+    <div class="container" style="padding: 20px 0">
+        <h1 style="margin-top: 74px; margin-bottom: 20px; text-align: center;">商品検索結果</h1>
+        <table class="table table-striped" style="margin-top: ">
+            <thead>
+                <tr><th>商品名</th><th>画像</th><th>商品概要</th><th>金額</th></tr>
+            </thead>
+            <tbody>
+                <% for (int i = 0; i < getInfos.size(); i++) {%>
+                <tr><td><a href="item.jsp?id=<%= getInfos.get(i).getMerchantID()%>"><%= getInfos.get(i).getName()%></a></td><td><img src=<%= getInfos.get(i).getImage()%> ></td><td><%= getInfos.get(i).getDescription()%></td><td><%= getInfos.get(i).getPrice()%></td></tr>
+                        <% }%>
+            </tbody>
+        </table> 
+
+        <script src="http://code.jquery.com/jquery.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
 </html>

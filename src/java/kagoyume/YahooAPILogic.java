@@ -64,16 +64,13 @@ public class YahooAPILogic {
         for (int i = 0; i < 20; i++) {
             ItemBeans itemBeans = new ItemBeans();
             Map<String, Object> result = ((Map<String, Object>) ((Map<String, Map<String, Object>>) json.get("ResultSet").get("0")).get("Result").get(String.valueOf(i)));
-
-            System.out.print("-------------name--------------");
-            System.out.print(result.get("Name").toString());
-            System.out.print("---------------------------");
-            
             
             itemBeans.setName(result.get("Name").toString());
             itemBeans.setDescription(result.get("Description").toString());
             itemBeans.setPrice(((Map<String, Object>) result.get("PriceLabel")).get("DefaultPrice").toString());
             itemBeans.setImage(((Map<String, Object>) result.get("Image")).get("Medium").toString());
+            itemBeans.setReviewAverage(((Map<String, Object>) result.get("Review")).get("Rate").toString());
+            
             itemBeans.setMerchantID(createMerchantID());
 
             ibArray.add(itemBeans);

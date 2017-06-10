@@ -16,6 +16,14 @@
         <servlet-name>Resistration</servlet-name>
         <servlet-class>kagoyume.Resistration</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>kagoyume.Logout</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ItemAdd</servlet-name>
+        <servlet-class>kagoyume.ItemAdd</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Search</servlet-name>
         <url-pattern>/Search</url-pattern>
@@ -31,6 +39,14 @@
     <servlet-mapping>
         <servlet-name>Resistration</servlet-name>
         <url-pattern>/Resistration</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/Logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ItemAdd</servlet-name>
+        <url-pattern>/ItemAdd</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

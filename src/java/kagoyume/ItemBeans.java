@@ -17,6 +17,7 @@ public class ItemBeans {
     private String image;
     private String price;
     private String merchantID;
+    private String reviewAverage;
     
     public String getName() {
         return this.name;
@@ -56,6 +57,14 @@ public class ItemBeans {
     
     public void setMerchantID(String merchantID) {
         this.merchantID = merchantID;
+    }
+    
+    public String getReviewAverage() {
+        return this.reviewAverage;
+    }
+    
+    public void setReviewAverage(String reviewAverage) {
+        this.reviewAverage = reviewAverage;
     }
     
 }

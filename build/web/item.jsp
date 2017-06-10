@@ -11,7 +11,7 @@
     HttpSession hs = request.getSession();
     ArrayList<ItemBeans> getInfos = (ArrayList<ItemBeans>) hs.getAttribute("GetDataFromAPI");
     request.setCharacterEncoding("UTF-8");
-        
+
     ItemBeans selectIB = null;
     for (int i = 0; i < getInfos.size(); i++) {
         if (request.getParameter("id").equals(getInfos.get(i).getMerchantID())) {
@@ -33,7 +33,7 @@
     <body>
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="navbar-header">
-                <a class="navbar-brand" href="" style="padding-left: 200px;">小森の店</a>
+                <a class="navbar-brand" href="top.jsp" style="padding-left: 200px;">小森の店</a>
                 <form action="Search" method="get" style=" margin: 21px auto 21px auto; height: 38px; float: right;">
                     <div class="input-group" style="width: 500px;">
                         <input type="text" name="search" class="form-control" placeholder="何かお探しですか？" />
@@ -47,51 +47,60 @@
             <button style="margin: 8px 48px 8px 0;" class="btn btn-info dropdown-toggle" data-toggle="dropdown">Info<span class="caret"></span></button>
             <ul class="dropdown-menu">
                 <% if (hs.getAttribute("LOGIN_USER") != null) { %>
-                <li><a href="">買い物かごの中</a></li>
-                <li><a href="">マイページ</a></li>
-                <li><a href="">ログアウト</a></li>
+                <li><a href="cart.jsp">買い物かごの中</a></li>
+                <li><a href="mypage.jsp">マイページ</a></li>
+                <li><a href="Logout">ログアウト</a></li>
                     <% } else { %>
-                <li><a href="">ログイン</a></li>
-                    <% } %>
+                <li><a href="login.jsp">ログイン</a></li>
+                    <% }%>
             </ul>
         </div>
     </nav>
-        <div class="container" style="margin-top: 80px;">
-            <h2 style="marigin-top: 20px"><%= selectIB.getName() %></h2>
-            <img src=<%= selectIB.getImage() %> >
-            <h4><%= selectIB.getDescription() %></h4>
+    <div class="container" style="margin-top: 104px;">
 
-            
- <a data-toggle="modal" href="#confirm" class="btn btn-primary">カート追加へ</a>
+        <h3 style="marigin-top: 20px; margin-bottom: 30px; text-align: center;"><%= selectIB.getName()%></h3>
+        <img style="width: 300px; height: 300px; margin: 20px auto 20px auto; display: block;" src=<%= selectIB.getImage()%> >
 
-     <div class="modal fade" id="confirm"> 
-      <div class="modal-dialog">
-       <div class="modal-content">
-        <div class="modal-header">
-         <button class="close" data-dismiss="modal">&times;</button>
-         <h4 class="modal-title">カート追加確認画面</h4>
-        </div>
-        <div class="modal-body">
-         <p>下記の商品をカートに追加しますか？</p>
-         <table class="table table-striped">
+        <table class="table" style="width: 800px; margin: 0 auto 50px auto;">
+            <tbody>
+                <tr><td style="width: 130px;"><strong>金額</strong></td><td><td><%= selectIB.getPrice()%>円</td></tr>
+                <tr><td style="width: 130px;"><strong>レビュー平均</strong></td><td><td><%= selectIB.getReviewAverage()%></td></tr>
+                <tr><td style="width: 130px;"><strong>商品概要</strong></td><td><td><%= selectIB.getDescription()%></td></tr>
+            </tbody>
+        </table>
 
-       <tbody>
-         <tr><td><%= selectIB.getName() %></td></tr>
-         <tr><td><img src=<%= selectIB.getImage() %> ></td><td><%= selectIB.getName() %></td></tr>
-       </tbody>
-     </table>
-        </div>
-        <div class="modal-footer">
-         <form>
-          <input type="submit" value="カートに追加" class="btn btn-success">
-         </form>
-        </div>
-       </div>
-      </div>
-     </div>         
-            
-            
-        </div>
-        
-    </body>
+
+            <a data-toggle="modal" style="width: 150px; display: block; float: right;" href="#confirm" class="btn btn-primary">カート追加へ</a>
+
+        <div class="modal fade" id="confirm"> 
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title"><strong>カート追加確認画面</strong></h4>
+                    </div>
+                    <div class="modal-body" style="margin-top: 0;">
+                        <p>下記の商品をカートに追加しますか？</p>
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr><td><img src=<%= selectIB.getImage()%> ></td><td><%= selectIB.getName()%></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <form action="Add" method="post">
+                            <input type="hidden" name="buyItem" value="<%= selectIB.getMerchantID() %>">
+                            <input type="submit" value="カートに追加" class="btn btn-success">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>         
+
+
+    </div>
+
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
 </html>

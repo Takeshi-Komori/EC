@@ -66,7 +66,7 @@ public final class top_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <body>\n");
       out.write("        <nav class=\"navbar navbar-default navbar-fixed-top\">\n");
       out.write("            <div class=\"navbar-header\">\n");
-      out.write("                <a class=\"navbar-brand\" href=\"\" style=\"padding-left: 200px;\">小森の店</a>\n");
+      out.write("                <a class=\"navbar-brand\" href=\"top.jsp\" style=\"padding-left: 200px;\">小森の店</a>\n");
       out.write("                <form action=\"Search\" method=\"get\" style=\" margin: 21px auto 21px auto; height: 38px; float: right;\">\n");
       out.write("                    <div class=\"input-group\" style=\"width: 500px;\">\n");
       out.write("                        <input type=\"text\" name=\"search\" class=\"form-control\" placeholder=\"何かお探しですか？\" />\n");
@@ -82,13 +82,13 @@ public final class top_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                ");
  if (hs.getAttribute("LOGIN_USER") != null) { 
       out.write("\n");
-      out.write("                <li><a href=\"\">買い物かごの中</a></li>\n");
-      out.write("                <li><a href=\"\">マイページ</a></li>\n");
-      out.write("                <li><a href=\"\">ログアウト</a></li>\n");
+      out.write("                <li><a href=\"cart.jsp\">買い物かごの中</a></li>\n");
+      out.write("                <li><a href=\"mypage.jsp\">マイページ</a></li>\n");
+      out.write("                <li><a href=\"Logout\">ログアウト</a></li>\n");
       out.write("                    ");
  } else { 
       out.write("\n");
-      out.write("                <li><a href=\"\">ログイン</a></li>\n");
+      out.write("                <li><a href=\"login.jsp\">ログイン</a></li>\n");
       out.write("                    ");
  } 
       out.write("\n");
@@ -98,13 +98,20 @@ public final class top_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    ");
  if (request.getAttribute("success") != null) {
       out.write("\n");
-      out.write("    <div style=\"margin-top: 104px; marin-left: 15px;  width: 800px;\" class=\"alert alert-success\">ログインに成功しました</div>\n");
+      out.write("    <div style=\"margin-top: 104px; padding-left: 15px;  width: 800px;\" class=\"alert alert-success\">ログインに成功しました</div>\n");
       out.write("    <!--        <div class=\"container\">\n");
       out.write("                <form style=\"margin-top: 20px;\" action=\"Search\" method=\"get\"> \n");
       out.write("                    <input type=\"text\" name=\"search\">\n");
       out.write("                    <input type=\"submit\" value=\"送信\">\n");
       out.write("                </form>\n");
       out.write("            </div>-->\n");
+      out.write("    ");
+ } else if(request.getAttribute("Logout_success") != null) { 
+      out.write("\n");
+      out.write("    <div style=\"margin-top: 104px; padding-left: 15px;  width: 800px;\" class=\"alert alert-info\">ログアウトしました</div>\n");
+      out.write("    \n");
+      out.write("    \n");
+      out.write("\n");
       out.write("    ");
 } else {
       out.write("\n");

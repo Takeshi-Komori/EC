@@ -65,7 +65,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <a class=\"navbar-brand\" href=\"\" style=\"padding-left: 200px;\">小森の店</a>\n");
       out.write("                <form action=\"Search\" method=\"get\" style=\" margin: 21px auto 21px auto; height: 38px; float: right;\">\n");
       out.write("                    <div class=\"input-group\" style=\"width: 500px;\">\n");
-      out.write("                        <input type=\"text\" class=\"form-control\" placeholder=\"何かお探しですか？\" />\n");
+      out.write("                        <input type=\"text\" name=\"search\" class=\"form-control\" placeholder=\"何かお探しですか？\" />\n");
       out.write("                        <span class=\"input-group-btn\">\n");
       out.write("                            <input type=\"submit\" class=\"btn btn-default\" value=\"検索\">\n");
       out.write("                        </span>\n");

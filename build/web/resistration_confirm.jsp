@@ -23,7 +23,7 @@
     <body>
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="navbar-header">
-                <a class="navbar-brand" href="" style="padding-left: 200px;">小森の店</a>
+                <a class="navbar-brand" href="top.jsp" style="padding-left: 200px;">小森の店</a>
                 <form action="Search" method="get" style=" margin: 21px auto 21px auto; height: 38px; float: right;">
                     <div class="input-group" style="width: 500px;">
                         <input type="text" name="search" class="form-control" placeholder="何かお探しですか？" />
@@ -37,11 +37,11 @@
             <button style="margin: 8px 48px 8px 0;" class="btn btn-info dropdown-toggle" data-toggle="dropdown">Info<span class="caret"></span></button>
             <ul class="dropdown-menu">
                 <% if (hs.getAttribute("LOGIN_USER") != null) { %>
-                <li><a href="">買い物かごの中</a></li>
-                <li><a href="">マイページ</a></li>
-                <li><a href="">ログアウト</a></li>
+                <li><a href="cart.jsp">買い物かごの中</a></li>
+                <li><a href="mypage.jsp">マイページ</a></li>
+                <li><a href="Logout">ログアウト</a></li>
                     <% } else { %>
-                <li><a href="">ログイン</a></li>
+                <li><a href="login.jsp">ログイン</a></li>
                     <% } %>
             </ul>
         </div>
