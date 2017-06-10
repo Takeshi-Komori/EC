@@ -28,7 +28,7 @@
                 <a class="navbar-brand" href="" style="padding-left: 200px;">小森の店</a>
                 <form action="Search" method="get" style=" margin: 21px auto 21px auto; height: 38px; float: right;">
                     <div class="input-group" style="width: 500px;">
-                        <input type="text" class="form-control" placeholder="何かお探しですか？" />
+                        <input type="text" name="search" class="form-control" placeholder="何かお探しですか？" />
                         <span class="input-group-btn">
                             <input type="submit" class="btn btn-default" value="検索">
                         </span>

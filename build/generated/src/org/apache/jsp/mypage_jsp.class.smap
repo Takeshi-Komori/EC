@@ -1,0 +1,17 @@
+SMAP
+mypage_jsp.java
+JSP
+*S JSP
+*F
++ 0 mypage.jsp
+mypage.jsp
+*L
+5,9:45
+13,25:54
+38:79,3
+39,3:82
+42:85,3
+43:88
+44:89,3
+45,45:92
+*E
