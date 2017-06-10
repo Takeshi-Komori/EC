@@ -31,7 +31,9 @@
                 <button style="margin: 8px 48px 8px 0;" class="btn btn-info dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> Info</button>
                 <ul class="dropdown-menu">
                     <li><a href="">買い物かごの中</a></li>
+                    <li><a href="">マイページ</a></li>
                     <li><a href="">ログアウト</a></li>
+                    <li><a href="">ログイン</a></li>
                 </ul>
             </div>
         </nav>

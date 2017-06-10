@@ -16,7 +16,7 @@
 <html lang="ja">
     <head>
         <meta charset="utf-8">
-        <title>Bootstrapの練習</title>
+        <title>登録</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     </head>
@@ -26,11 +26,12 @@
                 <a class="navbar-brand" href="">小森の店</a>
             </div>
             <div class="btn-group navbar-right" style="margin-top: 13px; margin-bottom: 13px;">
-                <button style="margin: 8px 48px 8px 0;" class="btn btn-info dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> Info
-                </button>
+                <button style="margin: 8px 48px 8px 0;" class="btn btn-info dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> Info</button>
                 <ul class="dropdown-menu">
                     <li><a href="">買い物かごの中</a></li>
+                    <li><a href="">マイページ</a></li>
                     <li><a href="">ログアウト</a></li>
+                    <li><a href="">ログイン</a></li>
                 </ul>
             </div>
         </nav>

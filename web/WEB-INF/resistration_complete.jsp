@@ -35,16 +35,22 @@
      </ul>
     </div>
    </nav>
-      <div class="container">
-        <h1>以上の内容で登録しました！</h1>
-        <h2><%= udb.getName() %></h2>
-        <h2><%= udb.getEmail() %></h2>
-        <h2><%= udb.getAddress() %></h2>
-        <h2><%= udb.getPassword() %></h2>
+      <div class="container" style="padding: 20px 0">
+            <h4 style="color: red; margin-top: 104px; text-align: center;">以下の内容で登録しました！</h4>
+            <div class="table-contents" style="width: 600px; margin-left: auto; margin-right: auto;">
+                <table class="table table-striped" style="margin-top: 24px;">
+                    <tbody>
+                        <tr><td>Name</td><td><%= udb.getName()%></td></tr>
+                        <tr><td>Email</td><td><%= udb.getEmail()%></td></tr>
+                        <tr><td>Address</td><td><%= udb.getAddress()%></td></tr>
+                        <tr><td>password</td><td><%= udb.getPassword()%></td></tr>
+                    </tbody>
+                </table>
+            </div>
+                    <a href="top.jsp" style="">トップに戻る</a>
       </div>
         
-        
-       <a href="top.jsp">トップに戻る</a
+                    
      <script src="http://code.jquery.com/jquery.js"></script>
      <script src="bootstrap/js/bootstrap.min.js"></script>
     </body>
