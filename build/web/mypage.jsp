@@ -42,7 +42,7 @@
             <ul class="dropdown-menu">
                 <% if (hs.getAttribute("LOGIN_USER") != null) { %>
                 <li><a href="cart.jsp">買い物かごの中</a></li>
-                <li><a href="mypage.jsp">マイページ</a></li>
+                <li><a href="MyPage">マイページ</a></li>
                 <li><a href="Logout">ログアウト</a></li>
                     <% } else { %>
                 <li><a href="login.jsp">ログイン</a></li>

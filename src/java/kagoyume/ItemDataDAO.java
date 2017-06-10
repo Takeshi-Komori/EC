@@ -33,7 +33,7 @@ public class ItemDataDAO {
             st.setString(3, idt.getItemCode());
             st.setString(4, idt.getImage());
             st.setInt(5, idt.getDeliveryType());
-            st.setTimestamp(5, new Timestamp(System.currentTimeMillis()));
+            st.setTimestamp(6, new Timestamp(System.currentTimeMillis()));
             st.executeUpdate();
             System.out.println("insert completed");
         }catch(SQLException e){

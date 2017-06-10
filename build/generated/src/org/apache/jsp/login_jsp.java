@@ -80,7 +80,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
  if (hs.getAttribute("LOGIN_USER") != null) { 
       out.write("\n");
       out.write("                <li><a href=\"cart.jsp\">買い物かごの中</a></li>\n");
-      out.write("                <li><a href=\"mypage.jsp\">マイページ</a></li>\n");
+      out.write("                <li><a href=\"MyPage\">マイページ</a></li>\n");
       out.write("                <li><a href=\"Logout\">ログアウト</a></li>\n");
       out.write("                    ");
  } else { 
