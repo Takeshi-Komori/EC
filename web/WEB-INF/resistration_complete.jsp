@@ -9,6 +9,7 @@
 <%@page import="kagoyume.UserDataBeans" %>
 <%
     HttpSession hs = request.getSession();
+    hs.removeAttribute("ACCESS_NUMBER");
     UserDataBeans udb = (UserDataBeans) hs.getAttribute("UserDataBeans");
 %>
 <!DOCTYPE html>

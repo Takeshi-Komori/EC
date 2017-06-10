@@ -24,6 +24,14 @@
         <servlet-name>ItemAdd</servlet-name>
         <servlet-class>kagoyume.ItemAdd</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BuyConfirm</servlet-name>
+        <servlet-class>kagoyume.BuyConfirm</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BuyComplete</servlet-name>
+        <servlet-class>kagoyume.BuyComplete</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Search</servlet-name>
         <url-pattern>/Search</url-pattern>
@@ -47,6 +55,14 @@
     <servlet-mapping>
         <servlet-name>ItemAdd</servlet-name>
         <url-pattern>/ItemAdd</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BuyConfirm</servlet-name>
+        <url-pattern>/BuyConfirm</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BuyComplete</servlet-name>
+        <url-pattern>/BuyComplete</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

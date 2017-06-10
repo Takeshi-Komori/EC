@@ -59,7 +59,7 @@
                    for (int i = 0; i < itemBeansBox.size(); i++) {%>
                      <tr><td><%= itemBeansBox.get(i).getName()%></td><td><img src=<%= itemBeansBox.get(i).getImage()%>></td><td><%= itemBeansBox.get(i).getPrice() %>円</td></tr>
                     <% } %>
-                   <a href="" style="width: 150px; display: block;" class="btn btn-primary">購入に進む</a>
+                   <a href="BuyConfirm" style="width: 150px; display: block;" class="btn btn-primary">購入に進む</a>
                 <% } else { %>
                     <h2>カートに商品はありません。検索欄から欲しいものを入力してみましょう！</h2>
                 <% }%>
