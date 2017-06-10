@@ -47,7 +47,11 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
-      out.write("<!DOCTYPE html>\n");
+
+    HttpSession hs = request.getSession();
+
+
+      out.write("\n");
       out.write("<html lang=\"ja\">\n");
       out.write("    <head>\n");
       out.write("        <meta charset=\"utf-8\">\n");
@@ -58,16 +62,35 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <body>\n");
       out.write("        <nav class=\"navbar navbar-default navbar-fixed-top\">\n");
       out.write("            <div class=\"navbar-header\">\n");
-      out.write("                <a class=\"navbar-brand\" href=\"\">小森の店</a>\n");
+      out.write("                <a class=\"navbar-brand\" href=\"\" style=\"padding-left: 200px;\">小森の店</a>\n");
+      out.write("                <form action=\"Search\" method=\"get\" style=\" margin: 21px auto 21px auto; height: 38px; float: right;\">\n");
+      out.write("                    <div class=\"input-group\" style=\"width: 500px;\">\n");
+      out.write("                        <input type=\"text\" class=\"form-control\" placeholder=\"何かお探しですか？\" />\n");
+      out.write("                        <span class=\"input-group-btn\">\n");
+      out.write("                            <input type=\"submit\" class=\"btn btn-default\" value=\"検索\">\n");
+      out.write("                        </span>\n");
+      out.write("                </form>\n");
       out.write("            </div>\n");
-      out.write("            <div class=\"btn-group navbar-right\" style=\"margin-top: 13px; margin-bottom: 13px;\">\n");
-      out.write("                <button style=\"margin: 8px 48px 8px 0;\" class=\"btn btn-info dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"glyphicon glyphicon-user\"></i> Info</button>\n");
-      out.write("                <ul class=\"dropdown-menu\">\n");
-      out.write("                    <li><a href=\"\">買い物かごの中</a></li>\n");
-      out.write("                    <li><a href=\"\">ログアウト</a></li>\n");
-      out.write("                </ul>\n");
-      out.write("            </div>\n");
-      out.write("        </nav>\n");
+      out.write("        </div>\n");
+      out.write("        <div class=\"btn-group navbar-right\" style=\"margin-top: 13px; margin-bottom: 13px;\">\n");
+      out.write("            <button style=\"margin: 8px 48px 8px 0;\" class=\"btn btn-info dropdown-toggle\" data-toggle=\"dropdown\">Info<span class=\"caret\"></span></button>\n");
+      out.write("            <ul class=\"dropdown-menu\">\n");
+      out.write("                ");
+ if (hs.getAttribute("LOGIN_USER") != null) { 
+      out.write("\n");
+      out.write("                <li><a href=\"\">買い物かごの中</a></li>\n");
+      out.write("                <li><a href=\"\">マイページ</a></li>\n");
+      out.write("                <li><a href=\"\">ログアウト</a></li>\n");
+      out.write("                    ");
+ } else { 
+      out.write("\n");
+      out.write("                <li><a href=\"\">ログイン</a></li>\n");
+      out.write("                    ");
+ } 
+      out.write("\n");
+      out.write("            </ul>\n");
+      out.write("        </div>\n");
+      out.write("    </nav>\n");
       out.write("\n");
       out.write("        <div class=\"container\">\n");
       out.write("            ");
@@ -108,7 +131,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            ");
  } 
       out.write("\n");
-      out.write("            <a href=\"AccessChecker\">新規登録</a>\n");
+      out.write("            <a href=\"resistration.jsp\">新規登録</a>\n");
       out.write("\n");
       out.write("            <script src=\"http://code.jquery.com/jquery.js\"></script>\n");
       out.write("            <script src=\"bootstrap/js/bootstrap.min.js\"></script>\n");

@@ -19,7 +19,6 @@ import javax.servlet.http.HttpSession;
 
 import org.xml.sax.SAXException;
 
-
 /**
  *
  * @author nanameue
@@ -35,21 +34,21 @@ public class Search extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SAXException, ParserConfigurationException {
         response.setContentType("text/html;charset=UTF-8");
+
         try (PrintWriter out = response.getWriter()) {
-            
+
+            ArrayList<ItemBeans> results = new ArrayList<ItemBeans>();
             HttpSession hs = request.getSession();
             hs.removeAttribute("GetDataFromAPI");
-            
             String result = "search.jsp";
             request.setCharacterEncoding("UTF-8");
             String searchStr = request.getParameter("search");
             String appid = "dj0zaiZpPWhqd2pObWg4MGxZQSZzPWNvbnN1bWVyc2VjcmV0Jng9Nzg-";
 
-            ArrayList<ItemBeans> results = YahooAPILogic.connectWebAPI(searchStr, appid);
+            results = YahooAPILogic.connectWebAPI(searchStr, appid);
 
             hs.setAttribute("GetDataFromAPI", results);
 
