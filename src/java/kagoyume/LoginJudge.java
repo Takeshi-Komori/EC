@@ -56,7 +56,7 @@ public class LoginJudge extends HttpServlet {
             } else {
 
                 HttpSession hs = request.getSession();
-                hs.setAttribute("login_user", udb);
+                hs.setAttribute("LOGIN_USER", udb);
                 
                 request.setAttribute("success", "success");
 

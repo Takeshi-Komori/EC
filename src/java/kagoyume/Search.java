@@ -40,6 +40,10 @@ public class Search extends HttpServlet {
             throws ServletException, IOException, SAXException, ParserConfigurationException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            
+            HttpSession hs = request.getSession();
+            hs.removeAttribute("GetDataFromAPI");
+            
             String result = "search.jsp";
             request.setCharacterEncoding("UTF-8");
             String searchStr = request.getParameter("search");
@@ -47,9 +51,6 @@ public class Search extends HttpServlet {
 
             ArrayList<ItemBeans> results = YahooAPILogic.connectWebAPI(searchStr, appid);
 
-//            request.setAttribute("GetDataFromAPI", results);
-            
-            HttpSession hs = request.getSession();
             hs.setAttribute("GetDataFromAPI", results);
 
             RequestDispatcher rq = request.getRequestDispatcher(result);

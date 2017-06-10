@@ -25,18 +25,31 @@
     <body>
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="navbar-header">
-                <a class="navbar-brand" href="">小森の店</a>
+                <a class="navbar-brand" href="" style="padding-left: 200px;">小森の店</a>
+                <form action="Search" method="get" style=" margin: 21px auto 21px auto; height: 38px; float: right;">
+                    <div class="input-group" style="width: 500px;">
+                        <input type="text" class="form-control" placeholder="何かお探しですか？" />
+                        <span class="input-group-btn">
+                            <input type="submit" class="btn btn-default" value="検索">
+                        </span>
+                </form>
             </div>
-            <div class="btn-group navbar-right" style="margin-top: 13px; margin-bottom: 13px;">
-                <button style="margin: 8px 48px 8px 0;" class="btn btn-info dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> Info</button>
-                <ul class="dropdown-menu">
-                    <li><a href="">買い物かごの中</a></li>
-                    <li><a href="">マイページ</a></li>
-                    <li><a href="">ログアウト</a></li>
-                    <li><a href="">ログイン</a></li>
-                </ul>
-            </div>
-        </nav>
+        </div>
+        <div class="btn-group navbar-right" style="margin-top: 13px; margin-bottom: 13px;">
+            <button style="margin: 8px 48px 8px 0;" class="btn btn-info dropdown-toggle" data-toggle="dropdown">Info<span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                <% if (hs.getAttribute("LOGIN_USER") != null) { %>
+                <li><a href="">買い物かごの中</a></li>
+                <li><a href="">マイページ</a></li>
+                <li><a href="">ログアウト</a></li>
+                    <% } else { %>
+                <li><a href="">ログイン</a></li>
+                    <% } %>
+            </ul>
+        </div>
+    </nav>
+            
+            
    <div class="container" style="padding: 20px 0">
      <h1 style="margin-top: 74px; margin-bottom: 20px; text-align: center;">商品検索結果</h1>
      <table class="table table-striped" style="margin-top: ">

@@ -64,6 +64,7 @@ public class UserDataDAO {
 //               udb.setUserID(rs.getInt("user_id"));
                udb.setName(rs.getString("name"));
                udb.setAddress(rs.getString("address"));
+               udb.setEmail(rs.getString("mail"));
             }
             
             System.out.println("select completed");
