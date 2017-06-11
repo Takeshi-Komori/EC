@@ -44,7 +44,7 @@ public class MyPage extends HttpServlet {
             UserDataBeans loginUser = (UserDataBeans)hs.getAttribute("LOGIN_USER");
             
             ItemDataDAO.getInstance().select(loginUser.getUserID(), ibArray);
-            
+
             request.setAttribute("ITEM_HISTORY",ibArray);
             
             RequestDispatcher rd = request.getRequestDispatcher(FORWARD_PATH);

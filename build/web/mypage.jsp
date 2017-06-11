@@ -9,11 +9,15 @@
 <%@page import="kagoyume.UserDataBeans" %>
 <%@page import="java.util.ArrayList" %>
 <%@page import="kagoyume.ItemBeans" %>
+<%@page import="java.text.SimpleDateFormat" %>
+<%@page import="java.util.Date" %>
+
 
 <%
     HttpSession hs = request.getSession();
-    UserDataBeans udb = (UserDataBeans)hs.getAttribute("LOGIN_USER");
-    ArrayList<ItemBeans> ibArray = (ArrayList<ItemBeans>)hs.getAttribute("ITEM_HISTORY");
+    UserDataBeans udb = (UserDataBeans) hs.getAttribute("LOGIN_USER");
+    ArrayList<ItemBeans> ibArray = (ArrayList<ItemBeans>) request.getAttribute("ITEM_HISTORY");
+    SimpleDateFormat sdf = new SimpleDateFormat("MM月dd日");
 
 %>
 <!DOCTYPE html>
@@ -46,48 +50,54 @@
                 <li><a href="Logout">ログアウト</a></li>
                     <% } else { %>
                 <li><a href="login.jsp">ログイン</a></li>
-                    <% } %>
+                    <% }%>
             </ul>
         </div>
     </nav>
 
-        <div class="container">
-            <h3 style="margin-top: 104px; text-align: center; margin-bottom: 36px;"><%= udb.getName() %>様の登録情報</h3>
-            <div class="informations" style="background-color: #f0f0f0; width: 800px; margin-left: auto; margin-right: auto;">
-                <div class="table-contents" style="width: 600px; margin-left: auto; margin-right: auto; padding-top: 12px; padding-bottom: 12px;">
-                    <table class="table" style="margin-top: 24px;">
-                        <thead>
-                            <tr><th>会員登録情報</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>名前</td><td><%= udb.getName() %></td><td><a href="" class="btn btn-info">変更</a></td></tr>
-                            <tr><td>メールアドレス</td><td><%= udb.getEmail() %></td><td><a href="" class="btn btn-info">変更</a></td></tr>
-                            <tr><td>住所</td><td><%= udb.getAddress() %></td><td><a href="" class="btn btn-info">変更</a></td></tr>
-                            <tr><td>password</td><td><% for(int i =0; i < udb.getPassword().length(); i++){out.print("*");} %></td><td><a href="" class="btn btn-info">変更</a></td></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <a href="" class="btn btn-danger" style="float: right; margin-top: 10px;">削除</a>
+    <div class="container">
+        <h3 style="margin-top: 104px; text-align: center; margin-bottom: 36px;"><%= udb.getName()%>様の登録情報</h3>
+        <div class="informations" style="background-color: #f0f0f0; width: 800px; margin-left: auto; margin-right: auto;">
+            <div class="table-contents" style="width: 600px; margin-left: auto; margin-right: auto; padding-top: 12px; padding-bottom: 12px;">
+                <table class="table" style="margin-top: 24px;">
+                    <thead>
+                        <tr><th>会員登録情報</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>名前</td><td><%= udb.getName()%></td><td><a href="" class="btn btn-info">変更</a></td></tr>
+                        <tr><td>メールアドレス</td><td><%= udb.getEmail()%></td><td><a href="" class="btn btn-info">変更</a></td></tr>
+                        <tr><td>住所</td><td><%= udb.getAddress()%></td><td><a href="" class="btn btn-info">変更</a></td></tr>
+                                <tr><td>password</td><td><% for (int i = 0; i < udb.getPassword().length(); i++) {
+                                out.print("*");
+                            }%></td><td><a href="" class="btn btn-info">変更</a></td></tr>
+                    </tbody>
+                </table>
             </div>
-
-            <h3 style="margin-top: 100px; text-align: center; margin-bottom: 36px;"><%= udb.getName() %>様の購入履歴</h3>
-            <table class="table" style="width: 800px; margin: 0 auto 0 auto;">
-                <thead>
-                    <tr><th>購入日</th><th>商品</th><th></th></tr>
-                </thead>
-                <tbody>
-                    
-                    <% for(int i =0; i < ibArray.size(); i++) { %>
-                    <tr><td>1月1日</td><td><p style="float: left;"><%= ibArray.get(i).getName() %></p><img style="width: 146px; height: 146px; margin-left: 100px; float: left;" src=<%= ibArray.get(i).getImage() %>></td><td><></td></tr>
-                    <%  } %>
-                    
-                </tbody>
-            </table>
+            <a href="" class="btn btn-danger" style="float: right; margin-top: 10px;">削除</a>
         </div>
 
+        <h3 style="margin-top: 100px; text-align: center; margin-bottom: 36px;"><%= udb.getName()%>様の購入履歴</h3>
+        <div class="table_contents" style="width: 800px; margin-left: auto; margin-right: auto;">
+        <table class="table" style="width: 800px; margin: 0 auto 0 auto;">
+            <thead>
+                <tr><th style="width: 100px;">購入日</th><th>商品</th><th></th></tr>
+            </thead>
+            <tbody>
+
+                <% for (int i = 0; i < ibArray.size(); i++) {%>
+                <tr><td><%= sdf.format(ibArray.get(i).getBoughtDate()) %></td><td><%= ibArray.get(i).getName()%><td><img style="width: 146px; height: 146px;" src=<%= ibArray.get(i).getImage()%>></td><td></td></tr>
+                        <%  }%>
+
+            </tbody>
+        </table>
+        <hr style="width: 800px; margin: 50px auto 25px auto;">
+        <h4 style="float: left; margin: 0 auto 100px auto;">累計購入金額</h4><h3 style="float: right; margin-top: 0; margin-right: 50px;"><%= udb.getTotalPrice()%>円</h3>
+       </div>
+    </div>
 
 
-        <script src="http://code.jquery.com/jquery.js"></script>
-        <script src="bootstrap/js/bootstrap.min.js"></script>
-    </body>
+
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
 </html>

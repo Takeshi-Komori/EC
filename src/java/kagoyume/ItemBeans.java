@@ -5,7 +5,7 @@
  */
 package kagoyume;
 
-import java.util.UUID;
+import java.util.Date;
 
 /**
  *
@@ -19,6 +19,7 @@ public class ItemBeans {
     private String itemID;
     private String reviewAverage;
     private Integer deliveryType;
+    private Date boughtDate;
     
     public String getName() {
         return this.name;
@@ -75,6 +76,16 @@ public class ItemBeans {
     public Integer getDeliveryType() {
         return this.deliveryType;
     }
+    
+    public void setBoughtDate(Date boughtDate) {
+        this.boughtDate = boughtDate;
+    }
+    
+    public Date getBoughtDate() {
+        return this.boughtDate;
+    }
+    
+    
     
     public void ID2DTOMapping(ItemDataDTO ido, Integer userID) {
         ido.setUserID(userID);

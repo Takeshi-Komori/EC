@@ -60,9 +60,10 @@ public class ItemDataDAO {
                 ItemBeans idb = new ItemBeans();
                 idb.setName(rs.getString("name"));
                 idb.setImage(rs.getString("image"));
+                idb.setBoughtDate(rs.getDate("buy_date"));
                 ibArray.add(idb);
             }
-           
+            
             System.out.println("insert completed");
         }catch(SQLException e){
             System.out.println(e.getMessage());
