@@ -58,22 +58,23 @@
     <div class="container">
         <h3 style="margin-top: 104px; text-align: center; margin-bottom: 36px;"><%= udb.getName()%>様の登録情報</h3>
         <div class="informations" style="background-color: #f0f0f0; width: 800px; margin-left: auto; margin-right: auto;">
-            <div class="table-contents" style="width: 600px; margin-left: auto; margin-right: auto; padding-top: 12px; padding-bottom: 12px;">
+            <div class="table-contents" style="width: 600px; margin-left: auto; margin-right: auto; padding-top: 12px; padding-bottom: 36px;">
                 <table class="table" style="margin-top: 24px;">
                     <thead>
-                        <tr><th>会員登録情報</th></tr>
+                        <tr><th>会員登録情報</th><th></th><th></th></tr>
                     </thead>
                     <tbody>
-                        <tr><td>名前</td><td><%= udb.getName()%></td><td><a href="" class="btn btn-info">変更</a></td></tr>
-                        <tr><td>メールアドレス</td><td><%= udb.getEmail()%></td><td><a href="" class="btn btn-info">変更</a></td></tr>
-                        <tr><td>住所</td><td><%= udb.getAddress()%></td><td><a href="" class="btn btn-info">変更</a></td></tr>
+                        <tr><td>名前</td><td><%= udb.getName()%></td><td></td></tr>
+                        <tr><td>メールアドレス</td><td><%= udb.getEmail()%></td><td></td></tr>
+                        <tr><td>住所</td><td><%= udb.getAddress()%></td><td></td></tr>
                                 <tr><td>password</td><td><% for (int i = 0; i < udb.getPassword().length(); i++) {
                                 out.print("*");
-                            }%></td><td><a href="" class="btn btn-info">変更</a></td></tr>
+                            }%></td><td></td></tr>
                     </tbody>
                 </table>
+              <a href="" class="btn btn-info">変更</a>
             </div>
-            <a href="" class="btn btn-danger" style="float: right; margin-top: 10px;">削除</a>
+            <a href="#delete_confirm" data-toggle="modal" class="btn btn-danger" style="float: right; margin-top: 10px;">削除</a>
         </div>
 
         <h3 style="margin-top: 100px; text-align: center; margin-bottom: 36px;"><%= udb.getName()%>様の購入履歴</h3>
@@ -93,6 +94,27 @@
         <hr style="width: 800px; margin: 50px auto 25px auto;">
         <h4 style="float: left; margin: 0 auto 100px auto;">累計購入金額</h4><h3 style="float: right; margin-top: 0; margin-right: 50px;"><%= udb.getTotalPrice()%>円</h3>
        </div>
+       
+    <div class="modal fade" id="delete_confirm"> 
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title"><strong>削除確認</strong></h4>
+                    </div>
+                    <div class="modal-body" style="margin-top: 0;">
+                        <p>データを削除しますか？</p>
+                        <p>登録情報が全て削除されます。</p>
+                    </div>
+                    <div class="modal-footer">
+                        <form action="DeleteComplete" method="post">
+                            <input type="submit" value="削除します" class="btn btn-danger">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>   
+       
     </div>
 
 

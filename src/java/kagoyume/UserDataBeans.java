@@ -19,6 +19,7 @@ public class UserDataBeans implements Serializable {
     private String address;
     private Integer userID;
     private Integer totalPrice;
+    private Integer deleteFlg;
 
     public void setName(String name) {
         this.name = name;
@@ -66,6 +67,14 @@ public class UserDataBeans implements Serializable {
     
     public Integer getTotalPrice() {
         return this.totalPrice;
+    }
+    
+    public void setDeleteFlg(Integer deleteFlg) {
+        this.deleteFlg = deleteFlg;
+    }
+    
+    public Integer getDeleteFlg() {
+        return this.deleteFlg;
     }
     
     public void UD2DTOMapping(UserDataDTO udo) {

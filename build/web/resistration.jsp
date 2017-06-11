@@ -8,6 +8,7 @@
 <%@page import="javax.servlet.http.HttpSession" %>
 <%
     HttpSession hs = request.getSession();
+    
 %>
 
 <!DOCTYPE html>
@@ -44,7 +45,10 @@
             </ul>
         </div>
     </nav>
-
+    <% if (request.getAttribute("delete") != null) {%>
+      <div style="margin-top: 104px; padding-left: 15px;  width: 800px;" class="alert alert-danger">対象のユーザーは削除されています。再度登録してください。</div>
+    <% } %>
+    
         <div class="container">
             <p style="margin-top: 104px; text-align: center;"><strong>新規登録</strong></p>
             <form action="Resistration" style="margin: 12px auto 0 auto; width: 600px;" method="post">

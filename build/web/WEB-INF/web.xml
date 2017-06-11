@@ -36,6 +36,18 @@
         <servlet-name>MyPage</servlet-name>
         <servlet-class>kagoyume.MyPage</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateConfirm</servlet-name>
+        <servlet-class>kagoyume.UpdateConfirm</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateComplete</servlet-name>
+        <servlet-class>kagoyume.UpdateComplete</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteComplete</servlet-name>
+        <servlet-class>kagoyume.DeleteComplete</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Search</servlet-name>
         <url-pattern>/Search</url-pattern>
@@ -71,6 +83,18 @@
     <servlet-mapping>
         <servlet-name>MyPage</servlet-name>
         <url-pattern>/MyPage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateConfirm</servlet-name>
+        <url-pattern>/UpdateConfirm</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateComplete</servlet-name>
+        <url-pattern>/UpdateComplete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteComplete</servlet-name>
+        <url-pattern>/DeleteComplete</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

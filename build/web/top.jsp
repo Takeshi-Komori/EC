@@ -58,7 +58,12 @@
     <div style="margin-top: 104px; padding-left: 15px;  width: 800px;" class="alert alert-info">ログアウトしました</div>
     
     
+    
+    <% } else if(request.getAttribute("delete_complete") != null) { %>
+    <div style="margin-top: 104px; padding-left: 15px;  width: 800px;" class="alert alert-info">ユーザー情報を削除しました</div>
 
+    
+    
     <%} else {%>
     <!--        <div class="container">
                 <form style="margin-top: 104px;" action="Search" method="get"> 

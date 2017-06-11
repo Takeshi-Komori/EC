@@ -68,14 +68,14 @@ public class UserDataDAO {
                 udb.setAddress(rs.getString("address"));
                 udb.setPassword(rs.getString("password"));
                 udb.setEmail(rs.getString("mail"));
+                udb.setDeleteFlg(rs.getInt("deleteFlg"));
+                
                 if (rs.getInt("total") == 0) {
                     udb.setTotalPrice(0);
                 }else if (rs.getInt("total") > 0){
                     udb.setTotalPrice(rs.getInt("total"));
                 }
             }
-
-          
 
             System.out.println("select completed");
         } catch (SQLException e) {
@@ -100,15 +100,34 @@ public class UserDataDAO {
 
             st.executeUpdate();
             System.out.println("insert completed");
-        } catch (SQLException e) {
+         } catch (SQLException e) {
             System.out.println(e.getMessage());
             throw new SQLException(e);
-        } finally {
+         } finally {
             if (con != null) {
                 con.close();
             }
-        }
+         }
+    }
         
-        }
+        public void updateDeleteFlg(UserDataDTO udt) {
+         Connection con = null;
+         PreparedStatement st = null;
+            try {
+              con = DBManager.getConnection();
+              st = con.prepareStatement("UPDATE user_t set deleteFlg = ? where user_id = ?");  
+                
+              st.setInt(1, 1);
+              st.setInt(2, udt.getUserID());
+              
+            } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            throw new SQLException(e);
+         } finally {
+            if (con != null) {
+                con.close();
+            }
+         }
+    }
         
 }
