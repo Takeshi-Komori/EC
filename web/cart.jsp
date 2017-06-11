@@ -8,6 +8,7 @@
 <%@page import="javax.servlet.http.HttpSession" %>
 <%@page import="java.util.ArrayList" %>
 <%@page import="kagoyume.ItemBeans" %>
+<%@page import="kagoyume.UserDataBeans" %>
 
 <%
     HttpSession hs = request.getSession();
@@ -15,6 +16,8 @@
     if (hs.getAttribute("ItemBeansBox") != null) {
         itemBeansBox = (ArrayList<ItemBeans>) hs.getAttribute("ItemBeansBox");
     }
+    UserDataBeans udb = (UserDataBeans) hs.getAttribute("LOGIN_USER");
+
 %>
 <!DOCTYPE html>
 <html lang="ja">
@@ -35,9 +38,12 @@
                             <input type="submit" class="btn btn-default" value="検索">
                         </span>
                 </form>
+
             </div>
+
         </div>
-        <div class="btn-group navbar-right" style="margin-top: 13px; margin-bottom: 13px;">
+
+        <div class="btn-group navbar-right" style="float: right; margin-top: 13px; margin-bottom: 13px;">
             <button style="margin: 8px 48px 8px 0;" class="btn btn-info dropdown-toggle" data-toggle="dropdown">Info<span class="caret"></span></button>
             <ul class="dropdown-menu">
                 <% if (hs.getAttribute("LOGIN_USER") != null) { %>
@@ -49,6 +55,12 @@
                     <% } %>
             </ul>
         </div>
+        <% if (hs.getAttribute("LOGIN_USER") != null) {%>
+        <p style="float: right; font-size: 14px; margin: 29.5px 50px 29.5px 0;" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span><%=  udb.getName()%>様</p>
+        <% } else { %>
+        <a href="" style="color: black; display: block; float: right; font-size: 14px; margin: 29.5px 50px 29.5px 0;">新規登録はこちら <span class="glyphicon glyphicon-check" aria-hidden="true"></span></a>
+            <% } %>
+
     </nav>
     <div class="container" style="padding: 20px 0">
         <h1 style="margin-top: 74px; margin-bottom: 20px; text-align: center;">買い物かごの中</h1>
@@ -56,20 +68,18 @@
             <tbody style="background-color: white;">
 
                 <% if (itemBeansBox.size() > 0) {
-                   for (int i = 0; i < itemBeansBox.size(); i++) {%>
-                     <tr><td><%= itemBeansBox.get(i).getName()%></td><td><img src=<%= itemBeansBox.get(i).getImage()%>></td><td><%= itemBeansBox.get(i).getPrice() %>円</td></tr>
-                    <% } %>
-                   <a href="BuyConfirm" style="width: 150px; display: block;" class="btn btn-primary">購入に進む</a>
-                <% } else { %>
-                    <h2>カートに商品はありません。検索欄から欲しいものを入力してみましょう！</h2>
-                <% }%>
-
-
-
+                        for (int i = 0; i < itemBeansBox.size(); i++) {%>
+                <tr><td><%= itemBeansBox.get(i).getName()%></td><td><img src=<%= itemBeansBox.get(i).getImage()%>></td><td><%= itemBeansBox.get(i).getPrice()%>円</td><td><a href="" class="btn btn-danger">削除</a></td></tr>
+                        <% } %>
             </tbody>
-        </table>    
+        </table>
+        <a href="BuyConfirm" style="width: 150px; display: block; float: right;" class="btn btn-primary">購入に進む</a>
+        <% } else { %>
+        <h2>カートに商品はありません。検索欄から欲しいものを入力してみましょう！</h2>
+        <% }%>
+    </div>
 
-        <script src="http://code.jquery.com/jquery.js"></script>
-        <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

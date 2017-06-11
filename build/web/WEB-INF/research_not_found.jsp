@@ -1,9 +1,8 @@
 <%-- 
-    Document   : top
-    Created on : 2017/05/27, 16:35:17
-    Author     : nanameue
+    Document   : research_not_found
+    Created on : 2017/06/11, 16:46:05
+    Author     : komoritakeshi
 --%>
-
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="javax.servlet.http.HttpSession" %>
@@ -57,32 +56,9 @@
             <% } %>
 
     </nav>
-    <% if (request.getAttribute("success") != null) {%>
-
-    <div style="margin-top: 104px; margin-left: 15px;  width: 800px;" class="alert alert-success">
-        <% if (request.getAttribute("success").equals("login_success")) { %>ログインに成功しました
-        <%} else if (request.getAttribute("success").equals("update_success")) { %>ユーザー情報を更新しました
-        <% } %> 
-    </div>       
-
-    <% } else if (request.getAttribute("Logout_success") != null) { %>
-    <div style="margin-top: 104px; margin-left: 15px;  width: 800px;" class="alert alert-info">ログアウトしました</div>
-
-
-
-    <% } else if (request.getAttribute("delete_complete") != null) { %>
-    <div style="margin-top: 104px; margin-left: 15px;  width: 800px;" class="alert alert-info">ユーザー情報を削除しました</div>
-
-
-
-    <%} else {%>
-    <!--        <div class="container">
-                <form style="margin-top: 104px;" action="Search" method="get"> 
-                    <input type="text" name="search">
-                    <input type="submit" value="送信">
-                </form>
-            </div>-->
-    <% }%>
+            <div class="container">
+            <h1 style="margin-top: 250px; text-align: center;">お探しのアイテムはありません</h1>
+            </div>
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
 </body>

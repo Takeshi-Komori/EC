@@ -32,9 +32,12 @@
                             <input type="submit" class="btn btn-default" value="検索">
                         </span>
                 </form>
+
             </div>
+
         </div>
-        <div class="btn-group navbar-right" style="margin-top: 13px; margin-bottom: 13px;">
+
+        <div class="btn-group navbar-right" style="float: right; margin-top: 13px; margin-bottom: 13px;">
             <button style="margin: 8px 48px 8px 0;" class="btn btn-info dropdown-toggle" data-toggle="dropdown">Info<span class="caret"></span></button>
             <ul class="dropdown-menu">
                 <% if (hs.getAttribute("LOGIN_USER") != null) { %>
@@ -46,6 +49,8 @@
                     <% } %>
             </ul>
         </div>
+        <p style="float: right; font-size: 14px; margin: 29.5px 50px 29.5px 0;" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span><%=  udb.getName()%>様</p>
+
     </nav>
  <div class="container">
             <p style="margin-top: 104px; text-align: center;"><strong>登録内容の変更</strong></p>

@@ -6,12 +6,14 @@
 <%@page import="kagoyume.ItemBeans" %>
 <%@page import="java.util.ArrayList" %>
 <%@page import="javax.servlet.http.HttpSession" %>
+<%@page import="kagoyume.UserDataBeans" %>
 
 <%
     HttpSession hs = request.getSession();
     ArrayList<ItemBeans> getInfos = (ArrayList<ItemBeans>) hs.getAttribute("GetDataFromAPI");
     request.setCharacterEncoding("UTF-8");
-
+    UserDataBeans udb = (UserDataBeans)hs.getAttribute("LOGIN_USER");
+    
     ItemBeans selectIB = null;
     for (int i = 0; i < getInfos.size(); i++) {
         if (request.getParameter("id").equals(getInfos.get(i).getItemID())) {
@@ -41,9 +43,12 @@
                             <input type="submit" class="btn btn-default" value="検索">
                         </span>
                 </form>
+
             </div>
+
         </div>
-        <div class="btn-group navbar-right" style="margin-top: 13px; margin-bottom: 13px;">
+
+        <div class="btn-group navbar-right" style="float: right; margin-top: 13px; margin-bottom: 13px;">
             <button style="margin: 8px 48px 8px 0;" class="btn btn-info dropdown-toggle" data-toggle="dropdown">Info<span class="caret"></span></button>
             <ul class="dropdown-menu">
                 <% if (hs.getAttribute("LOGIN_USER") != null) { %>
@@ -52,9 +57,15 @@
                 <li><a href="Logout">ログアウト</a></li>
                     <% } else { %>
                 <li><a href="login.jsp">ログイン</a></li>
-                    <% }%>
+                    <% } %>
             </ul>
         </div>
+        <% if (hs.getAttribute("LOGIN_USER") != null) {%>
+        <p style="float: right; font-size: 14px; margin: 29.5px 50px 29.5px 0;" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span><%=  udb.getName()%>様</p>
+        <% } else { %>
+        <a href="" style="color: black; display: block; float: right; font-size: 14px; margin: 29.5px 50px 29.5px 0;">新規登録はこちら <span class="glyphicon glyphicon-check" aria-hidden="true"></span></a>
+            <% } %>
+
     </nav>
     <div class="container" style="margin-top: 104px;">
 

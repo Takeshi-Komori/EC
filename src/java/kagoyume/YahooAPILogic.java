@@ -28,10 +28,6 @@ public class YahooAPILogic {
 
         String uri = "http://shopping.yahooapis.jp/ShoppingWebService/V1/json/itemSearch?appid=" + appid + "&query=" + searchStr;
 
-        System.out.print("------uri-------");
-        System.out.print(uri);
-        System.out.print("----------------");
-        
         URL url = new URL(uri);
         URLConnection connection = url.openConnection();
 
@@ -59,12 +55,16 @@ public class YahooAPILogic {
 
         Map<String, Map<String, Object>> json = JSON.decode(jsonText);
 
+        if (json.get("ResultSet").get("totalResultsReturned").equals("0")) {
+            return null;
+        }
+
         ArrayList<ItemBeans> ibArray = new ArrayList<ItemBeans>();
 
         for (int i = 0; i < 20; i++) {
             ItemBeans itemBeans = new ItemBeans();
             Map<String, Object> result = ((Map<String, Object>) ((Map<String, Map<String, Object>>) json.get("ResultSet").get("0")).get("Result").get(String.valueOf(i)));
-            
+
             itemBeans.setName(result.get("Name").toString());
             itemBeans.setDescription(result.get("Description").toString());
             itemBeans.setPrice(((Map<String, Object>) result.get("PriceLabel")).get("DefaultPrice").toString());

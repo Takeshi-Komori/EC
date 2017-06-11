@@ -4,6 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 import javax.servlet.http.HttpSession;
+import kagoyume.UserDataBeans;
 
 public final class top_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -48,9 +49,11 @@ public final class top_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
 
     HttpSession hs = request.getSession();
     request.setCharacterEncoding("UTF-8");
+    UserDataBeans udb = (UserDataBeans) hs.getAttribute("LOGIN_USER");
 
       out.write("\n");
       out.write("<!DOCTYPE html>\n");
@@ -72,9 +75,12 @@ public final class top_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            <input type=\"submit\" class=\"btn btn-default\" value=\"検索\">\n");
       out.write("                        </span>\n");
       out.write("                </form>\n");
+      out.write("\n");
       out.write("            </div>\n");
+      out.write("\n");
       out.write("        </div>\n");
-      out.write("        <div class=\"btn-group navbar-right\" style=\"margin-top: 13px; margin-bottom: 13px;\">\n");
+      out.write("\n");
+      out.write("        <div class=\"btn-group navbar-right\" style=\"float: right; margin-top: 13px; margin-bottom: 13px;\">\n");
       out.write("            <button style=\"margin: 8px 48px 8px 0;\" class=\"btn btn-info dropdown-toggle\" data-toggle=\"dropdown\">Info<span class=\"caret\"></span></button>\n");
       out.write("            <ul class=\"dropdown-menu\">\n");
       out.write("                ");
@@ -92,6 +98,20 @@ public final class top_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("            </ul>\n");
       out.write("        </div>\n");
+      out.write("        ");
+ if (hs.getAttribute("LOGIN_USER") != null) {
+      out.write("\n");
+      out.write("        <p style=\"float: right; font-size: 14px; margin: 29.5px 50px 29.5px 0;\" ><span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></span>");
+      out.print(  udb.getName());
+      out.write("様</p>\n");
+      out.write("        ");
+ } else { 
+      out.write("\n");
+      out.write("        <a href=\"\" style=\"color: black; display: block; float: right; font-size: 14px; margin: 29.5px 50px 29.5px 0;\">新規登録はこちら <span class=\"glyphicon glyphicon-check\" aria-hidden=\"true\"></span></a>\n");
+      out.write("            ");
+ } 
+      out.write("\n");
+      out.write("\n");
       out.write("    </nav>\n");
       out.write("    ");
  if (request.getAttribute("success") != null) {

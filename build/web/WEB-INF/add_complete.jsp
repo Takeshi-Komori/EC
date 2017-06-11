@@ -6,10 +6,10 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="javax.servlet.http.HttpSession" %>
-
+<%@page import="kagoyume.UserDataBeans" %>
 <%
     HttpSession hs = request.getSession();
-
+    UserDataBeans udb = (UserDataBeans) hs.getAttribute("LOGIN_USER");
 %>
 <!DOCTYPE html>
 <html lang="ja">
@@ -30,9 +30,12 @@
                             <input type="submit" class="btn btn-default" value="検索">
                         </span>
                 </form>
+
             </div>
+
         </div>
-        <div class="btn-group navbar-right" style="margin-top: 13px; margin-bottom: 13px;">
+
+        <div class="btn-group navbar-right" style="float: right; margin-top: 13px; margin-bottom: 13px;">
             <button style="margin: 8px 48px 8px 0;" class="btn btn-info dropdown-toggle" data-toggle="dropdown">Info<span class="caret"></span></button>
             <ul class="dropdown-menu">
                 <% if (hs.getAttribute("LOGIN_USER") != null) { %>
@@ -41,13 +44,15 @@
                 <li><a href="Logout">ログアウト</a></li>
                     <% } else { %>
                 <li><a href="login.jsp">ログイン</a></li>
-                    <% }%>
+                    <% } %>
             </ul>
         </div>
+        <p style="float: right; font-size: 14px; margin: 29.5px 50px 29.5px 0;" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span><%=  udb.getName()%>様</p>
+
     </nav>
 
 
-    <h1>商品追加したっす！！！！！</h1>
+        <h1 style="margin-left: 100px; margin-top: 300px;">商品追加したっす！！！！！</h1>
 
 
 

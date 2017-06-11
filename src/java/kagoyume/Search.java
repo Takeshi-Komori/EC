@@ -43,17 +43,22 @@ public class Search extends HttpServlet {
             ArrayList<ItemBeans> results = new ArrayList<ItemBeans>();
             HttpSession hs = request.getSession();
             hs.removeAttribute("GetDataFromAPI");
-            String result = "search.jsp";
+            final String FORWARD_PATH = "search.jsp";
+            final String FORWARD_ERROR_PATH = "WEB-INF/research_not_found.jsp";
+
             request.setCharacterEncoding("UTF-8");
             String searchStr = request.getParameter("search");
             String appid = "dj0zaiZpPWhqd2pObWg4MGxZQSZzPWNvbnN1bWVyc2VjcmV0Jng9Nzg-";
-
             results = YahooAPILogic.connectWebAPI(searchStr, appid);
 
-            hs.setAttribute("GetDataFromAPI", results);
-
-            RequestDispatcher rq = request.getRequestDispatcher(result);
-            rq.forward(request, response);
+            if (results != null) {
+                hs.setAttribute("GetDataFromAPI", results);
+                RequestDispatcher rq = request.getRequestDispatcher(FORWARD_PATH);
+                rq.forward(request, response);
+            } else {
+                RequestDispatcher rq = request.getRequestDispatcher(FORWARD_ERROR_PATH);
+                rq.forward(request, response);
+            }
         }
 
     }
