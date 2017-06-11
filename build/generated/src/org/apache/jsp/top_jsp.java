@@ -109,7 +109,14 @@ public final class top_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <div style=\"margin-top: 104px; padding-left: 15px;  width: 800px;\" class=\"alert alert-info\">ログアウトしました</div>\n");
       out.write("    \n");
       out.write("    \n");
+      out.write("    \n");
+      out.write("    ");
+ } else if(request.getAttribute("delete_complete") != null) { 
       out.write("\n");
+      out.write("    <div style=\"margin-top: 104px; padding-left: 15px;  width: 800px;\" class=\"alert alert-info\">ユーザー情報を削除しました</div>\n");
+      out.write("\n");
+      out.write("    \n");
+      out.write("    \n");
       out.write("    ");
 } else {
       out.write("\n");

@@ -7,6 +7,8 @@ package kagoyume;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,14 +37,20 @@ public class DeleteComplete extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             HttpSession hs = request.getSession();
             UserDataDTO deleteUser = new UserDataDTO();
-            final String FORWARD_PATH = "top.jsp";
+            UserDataBeans udb = (UserDataBeans)hs.getAttribute("LOGIN_USER");
+            final String FORWARD_PATH = "top.jsp";            
             
-            deleteUser.setUserID((UserDataBeans)hs.getAttribute("LOGIN_USER").getUserID());
+            deleteUser.setUserID(udb.getUserID());
             UserDataDAO.getInstance().updateDeleteFlg(deleteUser);
+            
+            hs.removeAttribute("LOGIN_USER");
+            hs.removeAttribute("ItemBeansBox");
             
             request.setAttribute("delete_complete","delete_complete");
             RequestDispatcher rd = request.getRequestDispatcher(FORWARD_PATH);
             rd.forward(request, response);
+        } catch (SQLException e) {
+            System.out.print(e.getMessage());
         }
     }
 

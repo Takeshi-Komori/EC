@@ -99,7 +99,7 @@ public class UserDataDAO {
             st.setInt(2, user_id);
 
             st.executeUpdate();
-            System.out.println("insert completed");
+            System.out.println("update completed");
          } catch (SQLException e) {
             System.out.println(e.getMessage());
             throw new SQLException(e);
@@ -110,7 +110,7 @@ public class UserDataDAO {
          }
     }
         
-        public void updateDeleteFlg(UserDataDTO udt) {
+        public void updateDeleteFlg(UserDataDTO udt) throws SQLException {
          Connection con = null;
          PreparedStatement st = null;
             try {
@@ -120,6 +120,8 @@ public class UserDataDAO {
               st.setInt(1, 1);
               st.setInt(2, udt.getUserID());
               
+              st.executeUpdate();
+              System.out.println("update completed");
             } catch (SQLException e) {
             System.out.println(e.getMessage());
             throw new SQLException(e);
