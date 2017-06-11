@@ -46,7 +46,7 @@
         </div>
     </nav>
     <% if (request.getAttribute("delete") != null) {%>
-      <div style="margin-top: 104px; padding-left: 15px;  width: 800px;" class="alert alert-danger">対象のユーザーは削除されています。再度登録してください。</div>
+      <div style="margin-top: 104px; margin-left: 15px; margin-bottom: 0; width: 800px;" class="alert alert-danger">対象のユーザーは削除されています。再度登録してください。</div>
     <% } %>
     
         <div class="container">

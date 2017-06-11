@@ -45,10 +45,6 @@ public class BuyComplete extends HttpServlet {
             
             Integer totalPrice = loginUserBeans.getTotalPrice();
             
-            System.out.print("-----------1番目-------------");
-            System.out.print(totalPrice);
-            System.out.print("------------------------");
-            
             Integer user_id = loginUserBeans.getUserID();
             
             for (int i = 0; i < ibArray.size(); i++) {
@@ -58,11 +54,9 @@ public class BuyComplete extends HttpServlet {
                 ItemDataDAO.getInstance().insert(idt);
             }
             
-            System.out.print("-------------2番目-----------");
-            System.out.print(totalPrice);
-            System.out.print("------------------------");
-            
             UserDataDAO.getInstance().updateTotalPrice(totalPrice, user_id);
+            loginUserBeans.setTotalPrice(totalPrice);
+            
             hs.removeAttribute("ItemBeansBox");
             
             RequestDispatcher rd = request.getRequestDispatcher(FORWARD_PATH);

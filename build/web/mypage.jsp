@@ -72,7 +72,7 @@
                             }%></td><td></td></tr>
                     </tbody>
                 </table>
-              <a href="" class="btn btn-info">変更</a>
+              <a href="UpdateConfirm" class="btn btn-info">変更</a>
             </div>
             <a href="#delete_confirm" data-toggle="modal" class="btn btn-danger" style="float: right; margin-top: 10px;">削除</a>
         </div>

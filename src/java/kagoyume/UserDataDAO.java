@@ -56,7 +56,7 @@ public class UserDataDAO {
         PreparedStatement st = null;
         try {
             con = DBManager.getConnection();
-            st = con.prepareStatement("select * from user_t where mail = ? and password = ?", Statement.RETURN_GENERATED_KEYS);
+            st = con.prepareStatement("SELECT * FROM user_t WHERE mail = ? AND password = ?", Statement.RETURN_GENERATED_KEYS);
             st.setString(1, email);
             st.setString(2, pass);
 
@@ -69,10 +69,10 @@ public class UserDataDAO {
                 udb.setPassword(rs.getString("password"));
                 udb.setEmail(rs.getString("mail"));
                 udb.setDeleteFlg(rs.getInt("deleteFlg"));
-                
+
                 if (rs.getInt("total") == 0) {
                     udb.setTotalPrice(0);
-                }else if (rs.getInt("total") > 0){
+                } else if (rs.getInt("total") > 0) {
                     udb.setTotalPrice(rs.getInt("total"));
                 }
             }
@@ -87,49 +87,73 @@ public class UserDataDAO {
             }
         }
     }
-        
-        public void updateTotalPrice(Integer totalPrice, Integer user_id) throws SQLException {
+
+    public void updateTotalPrice(Integer totalPrice, Integer user_id) throws SQLException {
         Connection con = null;
         PreparedStatement st = null;
         try {
             con = DBManager.getConnection();
-            st = con.prepareStatement("UPDATE user_t set total = ? where user_id = ?");
+            st = con.prepareStatement("UPDATE user_t SET total = ? WHERE user_id = ?");
 
             st.setInt(1, totalPrice);
             st.setInt(2, user_id);
 
             st.executeUpdate();
             System.out.println("update completed");
-         } catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
             throw new SQLException(e);
-         } finally {
+        } finally {
             if (con != null) {
                 con.close();
             }
-         }
+        }
     }
-        
-        public void updateDeleteFlg(UserDataDTO udt) throws SQLException {
-         Connection con = null;
-         PreparedStatement st = null;
-            try {
-              con = DBManager.getConnection();
-              st = con.prepareStatement("UPDATE user_t set deleteFlg = ? where user_id = ?");  
-                
-              st.setInt(1, 1);
-              st.setInt(2, udt.getUserID());
-              
-              st.executeUpdate();
-              System.out.println("update completed");
-            } catch (SQLException e) {
+
+    public void updateDeleteFlg(UserDataDTO udt) throws SQLException {
+        Connection con = null;
+        PreparedStatement st = null;
+        try {
+            con = DBManager.getConnection();
+            st = con.prepareStatement("UPDATE user_t SET deleteFlg = ? WHERE user_id = ?");
+
+            st.setInt(1, 1);
+            st.setInt(2, udt.getUserID());
+
+            st.executeUpdate();
+            System.out.println("update completed");
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
             throw new SQLException(e);
-         } finally {
+        } finally {
             if (con != null) {
                 con.close();
             }
-         }
+        }
     }
-        
+
+    public void updateUserInfo(UserDataDTO udt) throws SQLException {
+        Connection con = null;
+        PreparedStatement st = null;
+        try {
+            con = DBManager.getConnection();
+            st = con.prepareStatement("UPDATE user_t set name = ?, password = ?, mail = ?, address = ? WHERE user_id = ?");
+
+            st.setString(1, udt.getName());
+            st.setString(2, udt.getPassword());
+            st.setString(3, udt.getEmail());
+            st.setString(4, udt.getAddress());
+            st.setInt(5, udt.getUserID());
+
+            st.executeUpdate();
+            System.out.println("update completed");
+        } catch (SQLException e) {
+            System.out.print(e.getMessage());
+            throw new SQLException(e);
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+    }
 }

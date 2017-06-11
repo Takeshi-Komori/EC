@@ -50,7 +50,7 @@ public final class top_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
 
     HttpSession hs = request.getSession();
-
+    request.setCharacterEncoding("UTF-8");
 
       out.write("\n");
       out.write("<!DOCTYPE html>\n");
@@ -96,27 +96,33 @@ public final class top_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    ");
  if (request.getAttribute("success") != null) {
       out.write("\n");
-      out.write("    <div style=\"margin-top: 104px; padding-left: 15px;  width: 800px;\" class=\"alert alert-success\">ログインに成功しました</div>\n");
-      out.write("    <!--        <div class=\"container\">\n");
-      out.write("                <form style=\"margin-top: 20px;\" action=\"Search\" method=\"get\"> \n");
-      out.write("                    <input type=\"text\" name=\"search\">\n");
-      out.write("                    <input type=\"submit\" value=\"送信\">\n");
-      out.write("                </form>\n");
-      out.write("            </div>-->\n");
+      out.write("\n");
+      out.write("    <div style=\"margin-top: 104px; margin-left: 15px;  width: 800px;\" class=\"alert alert-success\">\n");
+      out.write("        ");
+ if (request.getAttribute("success").equals("login_success")) { 
+      out.write("ログインに成功しました\n");
+      out.write("        ");
+} else if (request.getAttribute("success").equals("update_success")) { 
+      out.write("ユーザー情報を更新しました\n");
+      out.write("        ");
+ } 
+      out.write(" \n");
+      out.write("    </div>       \n");
+      out.write("\n");
       out.write("    ");
- } else if(request.getAttribute("Logout_success") != null) { 
+ } else if (request.getAttribute("Logout_success") != null) { 
       out.write("\n");
-      out.write("    <div style=\"margin-top: 104px; padding-left: 15px;  width: 800px;\" class=\"alert alert-info\">ログアウトしました</div>\n");
-      out.write("    \n");
-      out.write("    \n");
-      out.write("    \n");
+      out.write("    <div style=\"margin-top: 104px; margin-left: 15px;  width: 800px;\" class=\"alert alert-info\">ログアウトしました</div>\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
       out.write("    ");
- } else if(request.getAttribute("delete_complete") != null) { 
+ } else if (request.getAttribute("delete_complete") != null) { 
       out.write("\n");
-      out.write("    <div style=\"margin-top: 104px; padding-left: 15px;  width: 800px;\" class=\"alert alert-info\">ユーザー情報を削除しました</div>\n");
+      out.write("    <div style=\"margin-top: 104px; margin-left: 15px;  width: 800px;\" class=\"alert alert-info\">ユーザー情報を削除しました</div>\n");
       out.write("\n");
-      out.write("    \n");
-      out.write("    \n");
+      out.write("\n");
+      out.write("\n");
       out.write("    ");
 } else {
       out.write("\n");

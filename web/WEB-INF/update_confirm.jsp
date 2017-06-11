@@ -1,16 +1,18 @@
 <%-- 
-    Document   : resitration
-    Created on : 2017/05/28, 12:08:26
-    Author     : nanameue
+    Document   : update_confirm
+    Created on : 2017/06/11, 11:16:34
+    Author     : komoritakeshi
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="javax.servlet.http.HttpSession" %>
+<%@page import="kagoyume.UserDataBeans" %>
+
 <%
     HttpSession hs = request.getSession();
-    
+    UserDataBeans udb = (UserDataBeans)hs.getAttribute("LOGIN_USER");
+    for (int i = 0; i < udb.getPassword().length(); i++) {out.print("*");}
 %>
-
 <!DOCTYPE html>
 <html lang="ja">
     <head>
@@ -45,35 +47,28 @@
             </ul>
         </div>
     </nav>
-    <% if (request.getAttribute("delete") != null) {%>
-      <div style="margin-top: 104px; margin-left: 15px; margin-bottom: 0; width: 800px;" class="alert alert-danger">対象のユーザーは削除されています。再度登録してください。</div>
-    <% } %>
-    
-        <div class="container">
-            <p style="margin-top: 104px; text-align: center;"><strong>新規登録</strong></p>
-            <form action="Resistration" style="margin: 12px auto 0 auto; width: 600px;" method="post">
+ <div class="container">
+            <p style="margin-top: 104px; text-align: center;"><strong>登録内容の変更</strong></p>
+            <form action="UpdateComplete" style="margin: 12px auto 0 auto; width: 600px;" method="post">
                 <div class="form-group">
                     <label class="control-label" for="username">Name</label>
-                    <input type="text" id="name" name="name" class="form-control" placeholder="マツモトキヨシ">
+                    <input type="text" id="name" name="name" class="form-control" value="<%= udb.getName() %>">
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="email">Email</label>
-                    <input type="text" id="email" name="email" class="form-control" placeholder="kyoshi@kiyoshi.com">
+                    <input type="text" id="email" name="email" class="form-control" value="<%= udb.getEmail() %>">
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="address">Address</label>
-                    <input type="text" id="email" name="address" class="form-control" placeholder="松キヨシ一丁目">
+                    <input type="text" id="email" name="address" class="form-control" value="<%= udb.getAddress() %>">
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="password">Password</label>
-                    <input type="password" id="password" name="password" class="form-control">
+                    <input type="password" id="password" name="password" class="form-control" value="<%= udb.getPassword() %>">
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="password_confirm">password-confirm</label>
-                    <input type="password" id="password_confirm" name="password_confirm" class="form-control">
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="新規登録" class="btn btn-primary">
+                    <input type="hidden" value="<%= udb.getUserID() %>" name="userID" class="btn btn-primary">
+                    <input type="submit" value="登録内容変更" class="btn btn-primary">
                 </div>
             </form>
 

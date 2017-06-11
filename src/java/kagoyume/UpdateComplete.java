@@ -7,6 +7,8 @@ package kagoyume;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,15 +34,26 @@ public class UpdateComplete extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet UpdateComplete</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet UpdateComplete at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            request.setCharacterEncoding("UTF-8");
+            final String FORWARD_PATH = "top.jsp";
+            
+            UserDataDTO updateDTO = new UserDataDTO();
+            
+            updateDTO.setName(request.getParameter("name"));
+            updateDTO.setEmail(request.getParameter("email"));
+            updateDTO.setAddress(request.getParameter("address"));
+            updateDTO.setPassword(request.getParameter("password"));
+            updateDTO.setUserID(Integer.parseInt(request.getParameter("userID")));
+            
+            UserDataDAO.getInstance().updateUserInfo(updateDTO);
+           
+            request.setAttribute("success", "update_success");
+            
+            RequestDispatcher rd = request.getRequestDispatcher(FORWARD_PATH);
+            rd.forward(request, response);
+            
+        } catch (SQLException e) {
+            System.out.print(e.getMessage());
         }
     }
 

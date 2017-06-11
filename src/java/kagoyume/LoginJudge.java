@@ -63,7 +63,7 @@ public class LoginJudge extends HttpServlet {
                 HttpSession hs = request.getSession();
                 hs.setAttribute("LOGIN_USER", udb);
                 
-                request.setAttribute("success", "success");
+                request.setAttribute("success", "login_success");
 
                 RequestDispatcher rd = request.getRequestDispatcher(FORWARD_PATH);
                 rd.forward(request, response);
