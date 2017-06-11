@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -36,6 +37,8 @@ public class UpdateComplete extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             request.setCharacterEncoding("UTF-8");
             final String FORWARD_PATH = "top.jsp";
+            HttpSession hs = request.getSession();
+            UserDataBeans udb = (UserDataBeans)hs.getAttribute("LOGIN_USER");
             
             UserDataDTO updateDTO = new UserDataDTO();
             
@@ -46,10 +49,11 @@ public class UpdateComplete extends HttpServlet {
             updateDTO.setUserID(Integer.parseInt(request.getParameter("userID")));
             
             UserDataDAO.getInstance().updateUserInfo(updateDTO);
-           
+            udb.setName(updateDTO.getName());
             request.setAttribute("success", "update_success");
             
             RequestDispatcher rd = request.getRequestDispatcher(FORWARD_PATH);
+            
             rd.forward(request, response);
             
         } catch (SQLException e) {

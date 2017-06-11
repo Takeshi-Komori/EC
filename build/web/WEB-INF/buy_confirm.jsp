@@ -26,7 +26,7 @@
     <body>
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="navbar-header">
-                <a class="navbar-brand" href="top.jsp" style="padding-left: 200px;">小森の店</a>
+                <a class="navbar-brand" href="top.jsp" style="padding-left: 200px;">KAGOYUME</a>
                 <form action="Search" method="get" style=" margin: 21px auto 21px auto; height: 38px; float: right;">
                     <div class="input-group" style="width: 500px;">
                         <input type="text" name="search" class="form-control" placeholder="何かお探しですか？" />

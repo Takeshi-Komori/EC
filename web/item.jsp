@@ -35,7 +35,7 @@
     <body>
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="navbar-header">
-                <a class="navbar-brand" href="top.jsp" style="padding-left: 200px;">小森の店</a>
+                <a class="navbar-brand" href="top.jsp" style="padding-left: 200px;">KAGOYUME</a>
                 <form action="Search" method="get" style=" margin: 21px auto 21px auto; height: 38px; float: right;">
                     <div class="input-group" style="width: 500px;">
                         <input type="text" name="search" class="form-control" placeholder="何かお探しですか？" />
@@ -69,7 +69,7 @@
     </nav>
     <div class="container" style="margin-top: 104px;">
 
-        <h3 style="marigin-top: 20px; margin-bottom: 30px; text-align: center;"><%= selectIB.getName()%></h3>
+        <h4 style="marigin-top: 20px; margin-bottom: 30px; text-align: center;"><strong><%= selectIB.getName()%></strong></h5>
         <img style="width: 300px; height: 300px; margin: 20px auto 20px auto; display: block;" src=<%= selectIB.getImage()%> >
 
         <table class="table" style="width: 800px; margin: 0 auto 50px auto;">
@@ -82,9 +82,9 @@
 
 
         <% if (hs.getAttribute("LOGIN_USER") != null) { %>
-        <a data-toggle="modal" style="width: 150px; display: block; float: right;" href="#confirm" class="btn btn-primary">カート追加へ</a>
+        <a data-toggle="modal" style="width: 150px; display: block; float: right; margin-bottom: 100px;" href="#confirm" class="btn btn-primary">カート追加へ</a>
         <% } else { %>
-        <a class="btn btn-primary" style="width: 300px; display: block; float: right; margin-right: 50px;" href="login.jsp">ログインするとカートに追加できます</a>
+        <a class="btn btn-primary" style="width: 300px; display: block; float: right; margin-right: 50px; margin-bottom: 100px;" href="login.jsp">ログインするとカートに追加できます</a>
         <% }%>
 
 

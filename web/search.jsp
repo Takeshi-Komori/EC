@@ -26,7 +26,7 @@
     <body>
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="navbar-header">
-                <a class="navbar-brand" href="top.jsp" style="padding-left: 200px;">小森の店</a>
+                <a class="navbar-brand" href="top.jsp" style="padding-left: 200px;">KAGOYUME</a>
                 <form action="Search" method="get" style=" margin: 21px auto 21px auto; height: 38px; float: right;">
                     <div class="input-group" style="width: 500px;">
                         <input type="text" name="search" class="form-control" placeholder="何かお探しですか？" />
@@ -68,8 +68,19 @@
             </thead>
             <tbody>
                 <% for (int i = 0; i < getInfos.size(); i++) {%>
-                <tr><td style="width: 200px;"><a href="item.jsp?id=<%= getInfos.get(i).getItemID()%>"><%= getInfos.get(i).getName()%></a></td><td><img src=<%= getInfos.get(i).getImage()%> ></td><td><%= getInfos.get(i).getDescription()%></td><td style="width: 100px;"><%= getInfos.get(i).getPrice()%>円</td></tr>
-                        <% }%>
+                <tr><td style="width: 300px;"><a href="item.jsp?id=<%= getInfos.get(i).getItemID()%>"><%= getInfos.get(i).getName()%></a></td><td><img src=<%= getInfos.get(i).getImage()%> ></td>
+                    <td>
+                     <% if(getInfos.get(i).getDescription().length() == 0) {
+                       out.print("※この商品の説明はありません");
+                     } else if (getInfos.get(i).getDescription().length() > 200) {
+                         out.print(getInfos.get(i).getDescription().substring(0, 180) + "......");
+                     } else {
+                        out.print(getInfos.get(i).getDescription());
+                     } %>
+                    </td>
+                    <td style="width: 100px;"><%= getInfos.get(i).getPrice()%>円</td>
+                </tr>
+               　<% }%>
             </tbody>
         </table> 
 

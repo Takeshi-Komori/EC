@@ -21,20 +21,17 @@
     </head>
     <body>
         <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="top.jsp" style="padding-left: 200px;">小森の店</a>
-                <form action="Search" method="get" style=" margin: 21px auto 21px auto; height: 38px; float: right;">
-                    <div class="input-group" style="width: 500px;">
-                        <input type="text" name="search" class="form-control" placeholder="何かお探しですか？" />
-                        <span class="input-group-btn">
-                            <input type="submit" class="btn btn-default" value="検索">
-                        </span>
-                </form>
-
-            </div>
-
-        </div>
-
+         <div class="navbar-header">
+           <a class="navbar-brand" href="top.jsp" style="padding-left: 200px;">KAGOYUME</a>
+             <form action="Search" method="get" style=" margin: 21px auto 21px auto; height: 38px; float: right;">
+                <div class="input-group" style="width: 500px;">
+                   <input type="text" name="search" class="form-control" placeholder="何かお探しですか？" />
+                   <span class="input-group-btn">
+                   <input type="submit" class="btn btn-default" value="検索">
+                   </span>
+             </form>
+                </div>
+         </div>
         <div class="btn-group navbar-right" style="float: right; margin-top: 13px; margin-bottom: 13px;">
             <button style="margin: 8px 48px 8px 0;" class="btn btn-info dropdown-toggle" data-toggle="dropdown">Info<span class="caret"></span></button>
             <ul class="dropdown-menu">
@@ -44,18 +41,15 @@
                 <li><a href="Logout">ログアウト</a></li>
                     <% } else { %>
                 <li><a href="login.jsp">ログイン</a></li>
-                    <% } %>
+                    <% }%>
             </ul>
         </div>
         <p style="float: right; font-size: 14px; margin: 29.5px 50px 29.5px 0;" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span><%=  udb.getName()%>様</p>
-
     </nav>
 
-
-        <h1 style="margin-left: 100px; margin-top: 300px;">商品追加したっす！！！！！</h1>
-
-
-
+    <div class="container">
+        <h5 style="margin-top: 104px;">商品を追加しました。Info→買い物かごの中で確認できます。</h5>
+    </div>
 
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>       

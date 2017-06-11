@@ -23,7 +23,7 @@
     <body>
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="navbar-header">
-                <a class="navbar-brand" href="top.jsp" style="padding-left: 200px;">小森の店</a>
+                <a class="navbar-brand" href="top.jsp" style="padding-left: 200px;">KAGOYUME</a>
                 <form action="Search" method="get" style=" margin: 21px auto 21px auto; height: 38px; float: right;">
                     <div class="input-group" style="width: 500px;">
                         <input type="text" name="search" class="form-control" placeholder="何かお探しですか？" />
@@ -51,7 +51,10 @@
         <p style="float: right; font-size: 14px; margin: 29.5px 50px 29.5px 0;" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span><%=  udb.getName()%>様</p>
 
     </nav>
-            <h1 style="margin-top: 300px;">変えました！！</h1>
+        <div class="container">
+         <h5 style="margin-top: 104px;">お買い上げいただきありがとうございます。</h5>
+        </div>
+            
 
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>            
