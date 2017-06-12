@@ -67,7 +67,7 @@ public final class top_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <body>\n");
       out.write("        <nav class=\"navbar navbar-default navbar-fixed-top\">\n");
       out.write("            <div class=\"navbar-header\">\n");
-      out.write("                <a class=\"navbar-brand\" href=\"top.jsp\" style=\"padding-left: 200px;\">小森の店</a>\n");
+      out.write("                <a class=\"navbar-brand\" href=\"top.jsp\" style=\"padding-left: 200px;\">KAGOYUME</a>\n");
       out.write("                <form action=\"Search\" method=\"get\" style=\" margin: 21px auto 21px auto; height: 38px; float: right;\">\n");
       out.write("                    <div class=\"input-group\" style=\"width: 500px;\">\n");
       out.write("                        <input type=\"text\" name=\"search\" class=\"form-control\" placeholder=\"何かお探しですか？\" />\n");
@@ -155,6 +155,7 @@ public final class top_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    ");
  }
       out.write("\n");
+      out.write("    \n");
       out.write("    <script src=\"http://code.jquery.com/jquery.js\"></script>\n");
       out.write("    <script src=\"bootstrap/js/bootstrap.min.js\"></script>\n");
       out.write("</body>\n");
