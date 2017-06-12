@@ -107,7 +107,7 @@ public final class top_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        ");
  } else { 
       out.write("\n");
-      out.write("        <a href=\"\" style=\"color: black; display: block; float: right; font-size: 14px; margin: 29.5px 50px 29.5px 0;\">新規登録はこちら <span class=\"glyphicon glyphicon-check\" aria-hidden=\"true\"></span></a>\n");
+      out.write("        <a href=\"resistration.jsp\" style=\"color: black; display: block; float: right; font-size: 14px; margin: 29.5px 50px 29.5px 0;\">新規登録はこちら <span class=\"glyphicon glyphicon-check\" aria-hidden=\"true\"></span></a>\n");
       out.write("            ");
  } 
       out.write("\n");
