@@ -11,9 +11,12 @@
 <%@page import="kagoyume.UserDataBeans" %>
 
 <%
+    request.setCharacterEncoding("UTF-8");
     HttpSession hs = request.getSession();
     ArrayList<ItemBeans> getInfos = (ArrayList<ItemBeans>) hs.getAttribute("GetDataFromAPI");
     UserDataBeans udb = (UserDataBeans) hs.getAttribute("LOGIN_USER");
+    String searchStr = (String)request.getAttribute("searchStr");
+    
 %>
 <!DOCTYPE html>
 <html lang="ja">
@@ -29,7 +32,7 @@
                 <a class="navbar-brand" href="top.jsp" style="padding-left: 200px;">KAGOYUME</a>
                 <form action="Search" method="get" style=" margin: 21px auto 21px auto; height: 38px; float: right;">
                     <div class="input-group" style="width: 500px;">
-                        <input type="text" name="search" class="form-control" placeholder="何かお探しですか？" />
+                        <input type="text" name="search" class="form-control" value="<%= searchStr %>" />
                         <span class="input-group-btn">
                             <input type="submit" class="btn btn-default" value="検索">
                         </span>

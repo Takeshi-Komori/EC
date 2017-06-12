@@ -69,7 +69,7 @@
 
                 <% if (itemBeansBox.size() > 0) {
                         for (int i = 0; i < itemBeansBox.size(); i++) {%>
-                <tr><td><%= itemBeansBox.get(i).getName()%></td><td><img src=<%= itemBeansBox.get(i).getImage()%>></td><td><%= itemBeansBox.get(i).getPrice()%>円</td><td><a href="" class="btn btn-danger">削除</a></td></tr>
+                        <tr><td><%= itemBeansBox.get(i).getName()%></td><td><img src=<%= itemBeansBox.get(i).getImage()%>></td><td><%= itemBeansBox.get(i).getPrice()%>円</td><td><a href="DeleteItem?itemId=<%= itemBeansBox.get(i).getItemID() %>&view=cart" class="btn btn-danger">削除</a></td></tr>
                         <% } %>
             </tbody>
         </table>
@@ -77,7 +77,10 @@
         <% } else { %>
         <h5 style="text-align: center; margin-top: 50px;">カートに商品はありません。検索欄から欲しいものを入力してみましょう！</h5>
         <% }%>
+        
     </div>
+    
+    
 
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>

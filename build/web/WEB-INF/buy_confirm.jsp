@@ -69,7 +69,7 @@
                             for (int i = 0; i < itemBeansBox.size(); i++) {
                                 totalPrice += Integer.parseInt(itemBeansBox.get(i).getPrice());
                         %>
-                        <tr style="background-color: white;"><td><%= itemBeansBox.get(i).getName()%></td><td><img src=<%= itemBeansBox.get(i).getImage()%>></td><td style="width: 100px; font-size: 18px;"><%= itemBeansBox.get(i).getPrice()%>円</td><td><a href="" class="btn btn-danger">削除</a></td></tr>          
+                        <tr style="background-color: white;"><td><%= itemBeansBox.get(i).getName()%></td><td><img src=<%= itemBeansBox.get(i).getImage()%>></td><td style="width: 100px; font-size: 18px;"><%= itemBeansBox.get(i).getPrice()%>円</td><td><a href="DeleteItem?itemId=<%= itemBeansBox.get(i).getItemID() %>&view=confirm" class="btn btn-danger">削除</a></td></tr>          
                                 <% }%>
                         
                         <tr><td><strong>配送先</strong></td><td></tr>

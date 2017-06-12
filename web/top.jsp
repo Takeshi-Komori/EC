@@ -76,12 +76,10 @@
 
 
     <%} else {%>
-    <!--        <div class="container">
-                <form style="margin-top: 104px;" action="Search" method="get"> 
-                    <input type="text" name="search">
-                    <input type="submit" value="送信">
-                </form>
-            </div>-->
+    <div class="container" style="margin-top: 340px;">
+        <h1 style="text-align: center">KAGOYUME</h1>
+        <h4 style="text-align: center">~かごいっぱいの夢を~</h4>
+    </div>
     <% }%>
     
     <script src="http://code.jquery.com/jquery.js"></script>

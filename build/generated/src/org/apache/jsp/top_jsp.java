@@ -146,12 +146,10 @@ public final class top_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    ");
 } else {
       out.write("\n");
-      out.write("    <!--        <div class=\"container\">\n");
-      out.write("                <form style=\"margin-top: 104px;\" action=\"Search\" method=\"get\"> \n");
-      out.write("                    <input type=\"text\" name=\"search\">\n");
-      out.write("                    <input type=\"submit\" value=\"送信\">\n");
-      out.write("                </form>\n");
-      out.write("            </div>-->\n");
+      out.write("    <div class=\"container\" style=\"margin-top: 340px;\">\n");
+      out.write("        <h1 style=\"text-align: center\">KAGOYUME</h1>\n");
+      out.write("        <h4 style=\"text-align: center\">~かごいっぱいの夢を~</h4>\n");
+      out.write("    </div>\n");
       out.write("    ");
  }
       out.write("\n");

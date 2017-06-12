@@ -48,6 +48,10 @@
         <servlet-name>DeleteComplete</servlet-name>
         <servlet-class>kagoyume.DeleteComplete</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeleteItem</servlet-name>
+        <servlet-class>kagoyume.DeleteItem</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Search</servlet-name>
         <url-pattern>/Search</url-pattern>
@@ -95,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>DeleteComplete</servlet-name>
         <url-pattern>/DeleteComplete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteItem</servlet-name>
+        <url-pattern>/DeleteItem</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
