@@ -10,7 +10,7 @@
 <%
     HttpSession hs = request.getSession();
     hs.removeAttribute("ACCESS_NUMBER");
-    UserDataBeans udb = (UserDataBeans) hs.getAttribute("UserDataBeans");
+    UserDataBeans udb = (UserDataBeans) hs.getAttribute("LOGIN_USER");
 %>
 <!DOCTYPE html>
 <html lang="ja">

@@ -26,12 +26,12 @@ public class UserDataDAO {
      * @param ud 対応したデータを保持しているJavaBeans
      * @throws SQLException 呼び出し元にcatchさせるためにスロー
      */
-    public void insert(UserDataDTO ud) throws SQLException {
+    public Integer insert(UserDataDTO ud) throws SQLException {
         Connection con = null;
         PreparedStatement st = null;
         try {
             con = DBManager.getConnection();
-            st = con.prepareStatement("INSERT INTO user_t(name,password,mail,address,newDate) VALUES(?,?,?,?,?)");
+            st = con.prepareStatement("INSERT INTO user_t(name,password,mail,address,newDate) VALUES(?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
             st.setString(1, ud.getName());
             st.setString(2, ud.getPassword());
             st.setString(3, ud.getEmail());
@@ -39,7 +39,16 @@ public class UserDataDAO {
             st.setTimestamp(5, new Timestamp(System.currentTimeMillis()));
 
             st.executeUpdate();
-            System.out.println("insert completed");
+            
+            int id = 0;
+            
+            ResultSet rs = st.getGeneratedKeys();
+            if (rs.next()) {
+                id = rs.getInt(1);
+            }
+
+            return id;
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             throw new SQLException(e);

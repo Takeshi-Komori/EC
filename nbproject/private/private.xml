@@ -2,6 +2,17 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/Users/komoritakeshi/Desktop/EC/src/java/kagoyume/Resistration.java</file>
+            <file>file:/Users/komoritakeshi/Desktop/EC/web/top.jsp</file>
+            <file>file:/Users/komoritakeshi/Desktop/EC/web/WEB-INF/resistration_complete.jsp</file>
+            <file>file:/Users/komoritakeshi/Desktop/EC/src/java/kagoyume/DeleteItem.java</file>
+            <file>file:/Users/komoritakeshi/Desktop/EC/web/WEB-INF/buy_confirm.jsp</file>
+            <file>file:/Users/komoritakeshi/Desktop/EC/web/error.jsp</file>
+            <file>file:/Users/komoritakeshi/Desktop/EC/src/java/kagoyume/ResistrationConfirm.java</file>
+            <file>file:/Users/komoritakeshi/Desktop/EC/web/cart.jsp</file>
+            <file>file:/Users/komoritakeshi/Desktop/EC/web/resistration_confirm.jsp</file>
+            <file>file:/Users/komoritakeshi/Desktop/EC/src/java/kagoyume/LoginJudge.java</file>
+        </group>
     </open-files>
 </project-private>

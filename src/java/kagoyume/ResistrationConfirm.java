@@ -7,7 +7,6 @@ package kagoyume;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -48,9 +47,11 @@ public class ResistrationConfirm extends HttpServlet {
                 out.print("不正なアクセスです");
 
             } else {
-
+                udb.setTotalPrice(0);
                 udb.UD2DTOMapping(ud);
-                UserDataDAO.getInstance().insert(ud);
+                udb.setUserID(UserDataDAO.getInstance().insert(ud));
+                
+                hs.setAttribute("LOGIN_USER",udb);
 
                 RequestDispatcher rd = request.getRequestDispatcher(FORWARD_PATH);
                 rd.forward(request, response);

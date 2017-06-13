@@ -78,7 +78,7 @@
                         <tr style="background-color: white;">
                             <td>
                                 <div class="form-inline">
-                                    <label class="radio-inline"><input type="radio" name="deliveryType" value="1">配送A</label>
+                                    <label class="radio-inline"><input type="radio" name="deliveryType" value="1" checked>配送A</label>
                                     <label class="radio-inline"><input type="radio" name="deliveryType" value="2">配送B</label>
                                     <label class="radio-inline"><input type="radio" name="deliveryType" value="3">配送C</label>
                                 </div>
